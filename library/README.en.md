@@ -18,19 +18,19 @@ Use this library to find old work by research problem and design line rather tha
 
 ### 1. Static schema → active profiling → semantic layer
 
-[APEX-SQL](https://arxiv.org/abs/2602.16720) → [Semantic-Layer-Mediated Agent](https://arxiv.org/abs/2606.31041)
+[APEX-SQL](../papers/2602.16720.en.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.en.md)
 
 **Takeaway:** enterprise data grounding is more than schema matching. One direction lets the agent inspect real data distributions to verify hypotheses; another hides physical schema behind a semantic intermediate representation.
 
 ### 2. Execute successfully → verify business truth
 
-[Business Truth / QueryProof](https://arxiv.org/abs/2608.09254) → [DataSpace](https://arxiv.org/abs/2608.03451) / [DSAgentBench](https://arxiv.org/abs/2608.10366) (evaluation lives in Benchmark Radar)
+[Business Truth / QueryProof](../papers/2608.09254.en.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar) (protocol audits live in Benchmark Radar)
 
 **Takeaway:** execution success is only a floor. Data agents must also handle business-definition ambiguity, unanswerable questions, artifact verification, OS/tool grounding, and false success.
 
 ### 3. One-shot plan → plan search / orchestration → reusable experience
 
-[CIPHER](https://arxiv.org/abs/2607.14386) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](https://arxiv.org/abs/2601.15709)
+[CIPHER](../papers/2607.14386.en.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.en.md)
 
 **Takeaway:** long-horizon data work can gain control capacity from test-time search, specialized-agent orchestration, or persistent reusable memory. These should be tested against simpler matched controls separately.
 
