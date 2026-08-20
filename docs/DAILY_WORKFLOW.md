@@ -1,98 +1,93 @@
-# Daily Research-Maintenance Workflow
+# Data Agent Daily Workflow v2
 
-This is the authoritative orchestration contract for Data Agent Radar. The recurring scheduler should stay short and point here.
+This file adapts [`RADAR_AGENT_PROTOCOL.md`](RADAR_AGENT_PROTOCOL.md) to Data Agent research. The scheduled Daily Agent is the editor-in-chief and only writer. Its scheduler prompt should only identify this repository, branch, and these contracts; this file—not the scheduler text—owns research behavior.
 
-## Transaction
+## Frozen preflight
 
-One run is one idempotent transaction:
+Freeze the run context required by the family protocol, then read `CURATION.md`, `COMPACTION.md`, `SCHEMA.md`, `data/papers.json`, the README pair, Library pair, relevant deep notes, and any useful ignored `.radar-private/` state. Verify the remote head and repair canonical/projection drift before discovery. Operational history is never a public repository surface.
 
-`preflight → discover → independent judgment → canonical update → evidence note → research-line update → derive Chinese/English reader surfaces → editorial review → validate → log → notify only if material`
+The one writing orchestrator may delegate read-only roles. No scout, reader, judge, or reviewer edits files or publishes state.
 
-## 1. Preflight
+## Source lanes
 
-Read `CURATION.md`, `docs/EDITORIAL_STANDARD.md`, the README pair, Research Library pair, canonical data/taxonomy when present, relevant notes, and recent run logs.
+Give independent scouts overlapping, bounded windows across primary sources:
 
-Repair reader/canonical drift before adding new work.
+1. data agents, data-science agents, analytics agents, and enterprise analytics;
+2. agentic Text-to-SQL, database agents, schema discovery, active profiling, and semantic layers;
+3. notebooks, code/data transformation, DB/API/OS tools, and real-computer data work;
+4. verification, business truth, clarification/abstention, artifact inspection, failure recovery, and workflow reuse;
+5. primary repositories, datasets, protocol releases, and version changes attached to candidate papers.
 
-## 2. Discovery
+Use overlap to catch late indexing. Bounded historical search is allowed only when an accepted current work exposes a repeatedly cited missing predecessor. Source-lane failures stay in ignored `.radar-private/` traces or ephemeral Agent memory.
 
-Search recent primary sources broadly across data agents, data-science agents, analytics agents, text-to-SQL agents, database agents, semantic layers, enterprise analytics, notebook/computer-use agents, data discovery, data engineering, verification, workflow reuse, and adjacent systems work.
+## Identity and scope gates
 
-Use overlapping recent windows so late indexing is not missed. Also run bounded historical backfill when a current research line is missing a repeatedly cited predecessor.
+Resolve arXiv/DOI/venue/repository identities and version relationships before scope judgment. Never merge by title similarity. Preserve earliest public `published_at`, actual `first_seen_at`, and actual `radar_published_at`; never substitute the run time for an unknown legacy event.
 
-## 3. Independent judgment
+The Domain Judge applies the canonical problem names in `CURATION.md`. It must identify which part of the data-work loop changes and whether the contribution is a reusable agent control boundary rather than an ordinary Text-to-SQL or code-generation result.
 
-When supported, separate roles:
+## Full-text evidence record
 
-- discovery optimizes recall;
-- scope/taxonomy judge decides which data-work boundary changes;
-- research analyst reads the full paper for high-value work;
-- skeptical reviewer challenges matched baselines, business semantics, tool/harness dependence, curation cost, and component attribution;
-- editor decides which public surfaces deserve change.
+For every accepted identity, read the full primary paper or equivalent complete protocol evidence and record:
 
-Do not accept papers merely to keep the feed active.
+`problem → mechanism → closest simple control → decisive/negative evidence → resource and curation cost → strongest alternative explanation → remaining uncertainty`
 
-## 4. Canonical-first publication
+Explicitly separate:
 
-For accepted work:
+- semantic grounding and business definitions;
+- planning/intermediate representation;
+- SQL/code/tool execution capacity;
+- result and artifact verification;
+- clarification, abstention, recovery, and error propagation;
+- persistent workflow, skill, or execution state.
 
-`canonical record → evidence note → research-problem/research-line relationship → reader projections`
+Executable SQL, code, or a plausible chart is not proof of business-semantic correctness.
 
-Preserve source identity, dates, links, mechanism, strongest comparison, decisive evidence, cost, negative results, and the strongest alternative explanation.
+## Skeptical audit
 
-## 5. Research Explainer Standard
+Before acceptance, a read-only skeptic checks model, prompt, context, semantic layer, tool interface, harness, retry policy, compute/token/latency budget, synthetic-task construction, and human curation. Multi-agent, search, verification, or memory claims require the simplest matched control capable of testing the named component. If evidence supports only the packaged system, publish only that ceiling.
 
-Current/high-visibility notes must resolve:
+Blocked full text, unresolved identity, or missing decisive evidence stays private with a retry trigger. There is no public pending, abstract-only, deferred, or blocked list.
 
-`Research delta → Problem → Mechanism → Closest comparison → Decisive evidence → What remains unproven → Field-map consequence → Related reading`
+## Canonical-to-reader transaction
 
-For Data Agents, explicitly separate semantic grounding, planning, tool/execution capacity, verification, recovery, and reusable state.
+For accepted work, the sole writer updates in this order:
 
-## 6. Chinese-first bilingual publication
+1. canonical record and time provenance in `data/papers.json`;
+2. paired deep note with the full-text evidence record;
+3. compact paired Timeline disclosure with Question, Evidence, Caveat, Map, and Links;
+4. rolling 7/30-day synthesis when the accepted set changes;
+5. prior closed ISO-week or calendar-month digest when a boundary is due;
+6. Field Map only when the evidence gate permits;
+7. Reading Paths and Library routes only when conceptual navigation changes;
+8. private validation, then one atomic commit of accepted public projections.
 
-- `README.md` is Simplified Chinese default; `README.en.md` is the full English counterpart.
-- Research Library and high-value public narrative are bilingual.
-- A material interpretation correction updates both languages in one transaction.
-- English is rewritten naturally from the same research judgment.
-- Keep paper/model/dataset/metric/SQL/tool/protocol names in canonical English when useful.
+Timeline has no fixed count. Put every native-v2 entry first, ordered by the full `radar_published_at` timestamp descending (not by day or registry insertion order), then retain the approved legacy compatibility identities in their fixed source-date order under an explicit provenance notice. Timeline and both rolling periods share one exact public synthesis cutoff; a native-v2 Timeline/current-window record must not postdate it.
 
-## 7. README projection
+## Period and map judgment
 
-Reader flow:
+Rolling periods state the current exact inclusive windows and synthesize canonical records/deep notes inside them. Each period section contains exactly one human-visible date range after HTML comments are removed. Native Radar-acceptance directions may use `new_signal`, `reinforced`, `revised`, `splits`, `retires`, or `no_material_change`, with ordered support identities, `low | medium | high` confidence, and a research-design implication. Similar vocabulary, release counts, or one paper do not establish a trend. The current legacy-publication adapter is contextual only: every item has `state=new_signal`, exactly one `legacy_unknown` support with `map_delta=none | early_signal`, and `prior=none`. Each complete human-visible Markdown block—including indented continuations and attached paragraphs—must not make any `trend` / `趋势` claim, qualified or otherwise. The block ends at the next direction item or period-section boundary.
 
-`Latest Research Signals → Research Shifts → Field Map → Reading Paths → Research Library → Scope and ownership`
+Each visible direction is one compact linked item backed by one `timefirst:direction` block carrying stable `key`, `state`, ordered `supports`, `confidence`, `implication`, `time_basis`, `non_acceptance`, `synthesized`, and `prior`. A block starts only at a human-visible direction list item, continues through indented or standalone attached paragraphs, and ends at the next visible direction or period boundary. Its single machine comment may sit on the heading line or any continuation, including at the trailing edge; a second comment is invalid. Encode implication as `stable-key~bounded-visible-witness`; the witness must occur inside the one scoped implication field in both language projections. Require exactly one scoped human-visible state, support, confidence, implication, time-basis/non-acceptance, synthesis, and prior-map field per item, so contradictory labels or validating asides cannot launder a malformed primary field. Bind these fields only after removing HTML comments; parse the single raw machine comment separately.
 
-Latest should remain compact. Importance >=4/5 or field-map-changing work may receive a fold when comparison, evidence, mechanism, or caveat would otherwise overload the list. Do not duplicate paper-note prose.
+The canonical registry uses `direction_keys` as the stable support-to-direction binding. Every period support must carry the direction block's exact `key`; a shared display problem or adjacent prose is insufficient. In a native Radar-acceptance adapter, `reinforced` needs at least two distinct in-window native supports with that same key plus `prior="field-map"` and one visible `#field-map` link. `revised`, `splits`, and `retires` require canonical native support and the same independent prior-map witness; native `new_signal` requires one `early_signal` support and `prior="none"`; `no_material_change` requires `supports="none"` and `prior="none"`. Those gates do not upgrade legacy publication context. Polaris and Business Truth keep their separate keys and remain separate contextual `new_signal` items.
 
-Use destination names rather than reading-time estimates in navigation. Do not add a thesis/mental-model preamble or wrap every entry in repeated `Research delta` labels.
+The initial migration layers use `time_basis="legacy_publication_date"` and visibly say `not Radar acceptance`. Each direction cites exactly one honest `legacy_unknown` record whose `published_at` falls in the stated window and is no later than the direction synthesis date at the available legacy precision; its support `map_delta` is `none` or `early_signal`, and its prior is `none`. Support count, a shared key, or a Field Map link can never turn this adapter into reinforcement or a durable map edit. Every direction states the exact ISO synthesis timestamp and UTC timezone. A future switch to native Radar-acceptance windows is a versioned contract migration, not a silent reinterpretation of these legacy layers.
 
-Field Map changes only when a durable data-work boundary changes. Reading Paths change only when the conceptual route improves.
+Assign every accepted record one `map_delta`: `none | early_signal | reinforces | revises | splits | retires`. An explicit `legacy_unknown` record is restricted to `none | early_signal`; it never carries the durable edit. Every durable transition (`reinforces | revises | splits | retires`) belongs to a changing `native_v2` record and carries ordered, unique canonical `map_support_ids` with at least two identities: the changing native record and at least one independent prior-map support whose effective evidence time is demonstrably earlier. Native records use their exact `radar_published_at`; a legacy record may still supply historical prior evidence using only its honest date-level `published_at`. If either side lacks time-of-day precision, same-day order is unknown and cannot pass the gate. For `revises`, `splits`, or `retires`, the earlier independent record must support the prior map claim while the changing record supplies the new claim-level evidence. Preserve the stable map unless this family gate is met.
 
-## 8. Research Library
+## Bilingual, validation, and exit
 
-History must be discoverable by research problem, research line, and year. Time-based digests, when added, are movement views rather than the archive key.
+Chinese and English are one semantic transaction. Preserve identity/order, source dates, contracts, evidence scope, strongest caveat, map token, period window, and normalized links. Natural phrasing may differ. Detect stable anchors, Data compatibility aliases, structural Timeline boundaries, and human-visible Timeline field labels only after masking HTML comments without changing raw offsets; then slice the original Markdown so separate semantic comments remain available to the machine contract. Family routes are likewise evaluated only on the human-visible surface.
 
-State research-line conclusions directly instead of repeating `Takeaway` / `带走的结论` wrappers.
+During the editorial pass, make Chinese prose follow Chinese sentence structure while preserving canonical identifiers. Keep layer-level reading-time navigation, but make every collapsed Timeline summary name its actual research change rather than a generic time promise or repeated label.
 
-Evaluation genealogy belongs in Agent Benchmark Radar. Cross-link rather than duplicating the benchmark map.
+Run:
 
-## 9. Editorial review
+```bash
+python -m unittest discover -s tests -v
+python scripts/no_public_runs.py
+python scripts/validate_reading.py
+```
 
-Apply `docs/EDITORIAL_STANDARD.md` after research judgment is stable. Review neighboring notes together for repeated sentence templates. Chinese prose should use Chinese sentence structure; keep English for paper/benchmark/model names, standard acronyms, and technical terms that are more precise in English. Remove machine-translated syntax and empty discourse markers.
-
-## 10. Validation and log
-
-Validate:
-
-- Chinese default + English counterpart exist and cross-link;
-- same current paper identities, primary links, and load-bearing claims across languages;
-- Research Library routes resolve;
-- domain-method content does not duplicate a benchmark registry;
-- no operational internals leak to public surfaces;
-- matched-baseline and system-vs-component attribution is explicit for strong claims.
-
-Write one compact `runs/daily/YYYY/MM/DD.md` log when run-history infrastructure exists.
-
-## Notification gate
-
-Notify only for an important new paper, a correction that changes a research conclusion, a meaningful field-map/research-line change, or an exact blocker. Otherwise finish silently.
+Recheck the frozen remote head immediately before publication. On drift, re-read affected canonical state, render again, validate again, and retry once without force-pushing. A material success is one atomic commit of accepted canonical data and reader projections. Candidate inventories, lane failures, retries, blockers, validation output, and other operational traces stay only in ignored `.radar-private/` or ephemeral Agent memory. If there is no material accepted change or due boundary digest, validate and exit silently without a content commit or notification.
