@@ -2,15 +2,11 @@
 
 [中文](README.md) | **English**
 
-*A living research map of agents that perform end-to-end data work: understand data, plan analysis, execute queries/code/transformations, verify results, recover from errors, and deliver artifacts.*
+This list tracks agents that perform end-to-end data work: understanding data, planning analyses, executing queries and code, transforming data, verifying results, recovering from errors, and delivering artifacts.
 
-**Research Radar family:** [Agent Benchmark Radar](https://github.com/H20Zhang/Agent-Benchmark-Radar) · [Agent Memory](https://github.com/H20Zhang/Agent-Memory-Radar) · [Agentic RAG](https://github.com/H20Zhang/Agentic-RAG-Radar) · **Data Agent**
+Related radars: [Agent Benchmark Radar](https://github.com/H20Zhang/Agent-Benchmark-Radar) · [Agent Memory](https://github.com/H20Zhang/Agent-Memory-Radar) · [Agentic RAG](https://github.com/H20Zhang/Agentic-RAG-Radar) · **Data Agent**
 
-[30 sec: Latest](#latest) · [5 min: Field Map](#field-map) · [15 min: Reading Paths](#reading-paths) · [Browse all](#library)
-
-> **Beginner mental model.** `intent → discover/ground data → plan → query/code/transform → inspect/verify → revise/recover → deliver`
->
-> **Current thesis.** A Data Agent is not merely an SQL generator. The difficult systems problem is connecting **business semantics, heterogeneous data, tool execution, intermediate state, verification, and recovery** into a reliable loop.
+[Latest](#latest) · [Field Map](#field-map) · [Reading Paths](#reading-paths) · [Library](#library)
 
 Last updated: **2026-08-20**
 
@@ -20,14 +16,14 @@ Last updated: **2026-08-20**
 ### [Polaris: Multi Agentic System for Conversational Enterprise Analytics](https://arxiv.org/abs/2608.14246)
 `Planning & Orchestration` · **2026-08-14**
 
-**Research delta.** Polaris decomposes enterprise analytics across specialized querying, visualization, and reasoning agents, with Dynamic Task Coordination assigning work online. The causal question is whether multi-agent coordination still wins against a simpler single-agent + tool-routing control.
+Polaris decomposes enterprise analytics across specialized querying, visualization, and reasoning agents, with Dynamic Task Coordination assigning work online. The causal question is whether multi-agent coordination still wins against a simpler single-agent + tool-routing control.
 
 ### [Business Truth, not SQL Accuracy: A Rule-Gated 7B Analytics Agent Outperforms a Direct-Prompted 32B Baseline](https://arxiv.org/abs/2608.09254)
 `Verification & Reliability` · **2026-08-10**
 
-**Research delta.** The work separates “SQL executes” from “the business meaning is correct,” making clarification, abstention, schema drift, and deterministic post-execution checks part of analytics-agent correctness.
+The work separates “SQL executes” from “the business meaning is correct,” making clarification, abstention, schema drift, and deterministic post-execution checks part of analytics-agent correctness.
 
-<details><summary><strong>Why this matters in ~60 seconds</strong></summary>
+<details><summary><strong>The gap between SQL execution and Business Truth</strong></summary>
 
 Production analytics failures often come from ambiguous business definitions, unanswerable warehouse questions, deprecated columns, or queries that execute successfully but return the wrong business number. QueryProof uses semantic-layer/catalog rules and deterministic post-execution checks before returning an answer.
 
@@ -38,14 +34,14 @@ The paper reports a higher Business Truth Rate than a direct-prompted larger-mod
 ### [CIPHER: A Decoupled Exploration-Selection Framework for Test-Time Scaling of Data Science Agents](https://arxiv.org/abs/2607.14386)
 `Planning & Search` · **2026-07-15**
 
-**Research delta.** CIPHER avoids committing the entire data-science trajectory to one initial hypothesis: it generates multiple candidate initial states, selects among them, and executes several paths in parallel.
+CIPHER avoids committing the entire data-science trajectory to one initial hypothesis: it generates multiple candidate initial states, selects among them, and executes several paths in parallel.
 
 ### [A Semantic-Layer-Mediated Agent for Natural Language to SQL over Heterogeneous Enterprise Databases](https://arxiv.org/abs/2606.31041)
 `Semantic Grounding & Execution` · **2026-06-30**
 
-**Research delta.** The agent reasons over a curated semantic layer and emits a compact Semantic Model Query, while a deterministic compiler handles physical-schema and SQL-dialect execution.
+The agent reasons over a curated semantic layer and emits a compact Semantic Model Query, while a deterministic compiler handles physical-schema and SQL-dialect execution.
 
-<details><summary><strong>Why this design point matters</strong></summary>
+<details><summary><strong>Why introduce a Semantic Model Query</strong></summary>
 
 Direct NL→SQL over hundreds of physical tables asks the model to solve semantic grounding and dialect-specific execution at the same time. This design inserts a semantic intermediate representation so the model composes verified business concepts while deterministic code handles SQL realization.
 
@@ -56,15 +52,15 @@ That improves grounding but moves a large part of system quality into the semant
 ### [APEX-SQL: Talking to the data via Agentic Exploration for Text-to-SQL](https://arxiv.org/abs/2602.16720)
 `Data Discovery & Grounding` · **2026-02-11**
 
-**Research delta.** Schema linking becomes hypothesis → data profiling → verification: the agent actively inspects real values/distributions to validate column and join assumptions before generating SQL.
+Schema linking becomes hypothesis → data profiling → verification: the agent actively inspects real values/distributions to validate column and join assumptions before generating SQL.
 
 ### [AgentSM: Semantic Memory for Agentic Text-to-SQL](https://arxiv.org/abs/2601.15709)
 `Learning & Reuse` · **2026-01-22**
 
-**Research delta.** Prior execution traces become interpretable semantic programs that persist as database-specific memory, allowing future queries to reuse reasoning paths rather than rediscover them from scratch.
+Prior execution traces become interpretable semantic programs that persist as database-specific memory, allowing future queries to reuse reasoning paths rather than rediscover them from scratch.
 
 <a id="changes"></a>
-## What’s Changing
+## Research Shifts
 
 | Shift | Evidence | Research implication |
 |---|---|---|
@@ -99,15 +95,13 @@ That improves grounding but moves a large part of system quality into the semant
 <a id="library"></a>
 ## Research Library
 
-- **[Browse by problem / research line / year](library/README.en.md)**
+- [Browse by problem / research line / year](library/README.en.md)
 - [Data Agent evaluation genealogy](https://github.com/H20Zhang/Agent-Benchmark-Radar)
 
-## Scope
+## Scope and ownership
 
 High-priority work should change a meaningful control boundary in real data work: data discovery/grounding, semantic planning, multi-tool execution, verification/recovery, workflow learning/reuse, or enterprise analytics orchestration.
 
 Plain Text-to-SQL leaderboard papers without a substantive agent-control, data-interaction, or verification contribution are usually not high priority.
-
-## About
 
 This repo covers methods, systems, and research tensions. Benchmark genealogy, protocol validity, and evaluation gaps live in [Agent Benchmark Radar](https://github.com/H20Zhang/Agent-Benchmark-Radar) so the family does not maintain two competing benchmark maps.

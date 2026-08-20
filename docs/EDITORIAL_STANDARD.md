@@ -22,6 +22,16 @@ For Data Agents, explicitly ask whether the claimed gain comes from **better sem
 
 Keep paper titles, datasets, models, metrics, SQL/tool/protocol names, and established technical terms in English when that improves precision/search.
 
+Chinese sentences should otherwise use Chinese syntax and connective structure. Do not build a Chinese sentence by preserving an English clause order and replacing only individual words.
+
+## Public entry surfaces
+
+- Lead with the papers, research map, and navigation readers came for; do not add a method manifesto, thesis preamble, or instructions about how long the page should take to read.
+- Navigation labels name destinations, not reading-time estimates.
+- Write entry summaries and research-line conclusions as direct prose. Do not wrap every item in repeated labels such as `Research delta`, `Takeaway`, or `带走的结论`.
+- Keep a fold only when it carries comparison, evidence, mechanism, or caveat that would make the flat list harder to scan. Its summary should name that content rather than promise a reading time.
+- Preserve paper, benchmark, dataset, model, metric, and standard acronym names. Translate surrounding grammar instead of translating identifiers.
+
 ## Preferred prose
 
 - Explain the business/data problem before agent jargon.
@@ -47,7 +57,7 @@ Detect pattern density, not banned vocabulary.
 
 ## README fold contract
 
-A 60–90 second fold should explain the surviving data-work problem, actual control/data flow, closest comparison, decisive evidence, and strongest caveat in 2–4 natural paragraphs.
+A README fold should explain the surviving data-work problem, actual control/data flow, closest comparison, decisive evidence, and strongest caveat in 2–4 natural paragraphs.
 
 ## Epistemic language
 

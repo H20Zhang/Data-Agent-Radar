@@ -1,44 +1,44 @@
-# Data Agent Research Library
+# Data Agent 研究文献库
 
 **中文** | [English](README.en.md) · [返回首页](../README.md)
 
-这里按 research problem 与 research line 找历史工作，不把“本周新增”当成长期 archive。
+文献按研究问题、研究路线和年份组织；“本周新增”不作为长期归档方式。
 
-## 按 Research Problem 浏览
+## 按研究问题浏览
 
 | 问题 | 研究焦点 |
 |---|---|
-| **Data Discovery & Grounding** | schema linking、metadata、active profiling、heterogeneous evidence discovery、business semantics |
-| **Planning & Semantic Interaction** | semantic layer、intermediate representation、analytic plan、query decomposition |
-| **Execution & Transformation** | SQL / Python / notebook / DB / API / OS tool orchestration |
-| **Verification & Recovery** | business truth、artifact validation、clarification/abstention、failure recovery |
-| **Learning & Reuse** | database-specific memory、workflow/skill reuse、experience accumulation |
+| **Data Discovery & Grounding** | 数据库模式关联、元数据、主动数据分析、异构证据发现、业务语义 |
+| **Planning & Semantic Interaction** | 语义层、中间表示、分析计划、查询分解 |
+| **Execution & Transformation** | SQL / Python / 计算笔记本 / 数据库 / API / 操作系统工具编排 |
+| **Verification & Recovery** | 业务真实性、产物验证、澄清/拒答、失败恢复 |
+| **Learning & Reuse** | 数据库专属记忆、工作流/技能复用、经验积累 |
 
-## 按 Research Line 浏览
+## 按研究路线浏览
 
-### 1. Static schema → active profiling → semantic layer
+### 1. 静态数据库模式 → 主动数据分析 → 语义层
 
 [APEX-SQL](../papers/2602.16720.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
 
-**带走的结论：** enterprise data grounding 不只是 schema matching。一个方向让 agent 主动看真实 data distribution 验证假设；另一个方向把 physical schema 隔离在 semantic intermediate representation 之后。
+企业数据对齐不只是数据库模式匹配。APEX-SQL 让 Agent 主动检查真实的数据分布来验证假设；Semantic-Layer-Mediated Agent 则用语义中间表示隔离物理数据库模式。
 
-### 2. Execute successfully → verify business truth
+### 2. 成功执行 → 验证业务真实性
 
-[Business Truth / QueryProof](../papers/2608.09254.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dataspace.md) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dsagentbench.md)（evaluation 在 Benchmark Radar）
+[Business Truth / QueryProof](../papers/2608.09254.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dataspace.md) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dsagentbench.md)（评测分析见 Benchmark Radar）
 
-**带走的结论：** execution success 只是最低门槛。Data Agent 还要处理 business-definition ambiguity、unanswerable questions、artifact verification、OS/tool grounding 与 false success。
+查询能够执行只是最低门槛。Data Agent 还需要处理业务定义歧义、无法回答的问题、产物验证、操作系统和工具环境的对齐，以及虚假成功。
 
-### 3. One-shot plan → plan search / orchestration → reusable experience
+### 3. 单次规划 → 规划搜索/编排 → 可复用经验
 
 [CIPHER](../papers/2607.14386.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.md)
 
-**带走的结论：** long-horizon data work 的 control capacity 可以来自 test-time search、specialized-agent orchestration 或 persistent reusable memory；三者应该用更简单 matched controls 分别验证。
+长时程数据工作的控制能力可以来自测试时搜索、专用 Agent 编排或持久化可复用记忆；它们各自的收益都需要用更简单、条件匹配的对照系统分别验证。
 
 ## 按年份浏览
 
-- **2026：** 当前重点包括 enterprise grounding、verification、test-time planning、multi-agent analytics 与 reusable semantic memory。
-- **2025 及更早：** 作为 foundation/precursor 的 text-to-SQL、data-science code 与 early data-agent systems 会在后续 backfill 中按 research line 补齐，而不是按月份堆列表。
+- **2026：** 当前重点包括企业数据对齐、验证、测试时规划、多 Agent 分析和可复用语义记忆。
+- **2025 及更早：** 后续将沿研究路线补充作为基础或先驱的 Text-to-SQL、数据科学代码和早期 Data Agent 系统，而不是按月份堆叠列表。
 
-## Evaluation
+## 与评测仓库的分工
 
-Data Agent 的 benchmark genealogy、protocol/confounder、measurement gaps 统一在 [Agent Benchmark Radar](https://github.com/H20Zhang/Agent-Benchmark-Radar) 维护。这个 Library 只维护 methods/systems research line，避免同一 benchmark 在两个 repo 被独立解释。
+Data Agent 评测基准的演进脉络、评测协议、混杂因素和评测缺口统一由 [Agent Benchmark Radar](https://github.com/H20Zhang/Agent-Benchmark-Radar) 维护。本库只维护方法与系统的研究路线，避免同一个评测基准在两个仓库中被分别解释。

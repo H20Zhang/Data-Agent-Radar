@@ -60,9 +60,11 @@ For Data Agents, explicitly separate semantic grounding, planning, tool/executio
 
 Reader flow:
 
-`Latest Research Signals → What’s Changing → Field Map → Reading Paths → Research Library → Scope/About`
+`Latest Research Signals → Research Shifts → Field Map → Reading Paths → Research Library → Scope and ownership`
 
-Latest should remain compact. Importance >=4/5 or field-map-changing work may receive a 60–90 second fold. Do not duplicate paper-note prose.
+Latest should remain compact. Importance >=4/5 or field-map-changing work may receive a fold when comparison, evidence, mechanism, or caveat would otherwise overload the list. Do not duplicate paper-note prose.
+
+Use destination names rather than reading-time estimates in navigation. Do not add a thesis/mental-model preamble or wrap every entry in repeated `Research delta` labels.
 
 Field Map changes only when a durable data-work boundary changes. Reading Paths change only when the conceptual route improves.
 
@@ -70,11 +72,13 @@ Field Map changes only when a durable data-work boundary changes. Reading Paths 
 
 History must be discoverable by research problem, research line, and year. Time-based digests, when added, are movement views rather than the archive key.
 
+State research-line conclusions directly instead of repeating `Takeaway` / `带走的结论` wrappers.
+
 Evaluation genealogy belongs in Agent Benchmark Radar. Cross-link rather than duplicating the benchmark map.
 
 ## 9. Editorial review
 
-Apply `docs/EDITORIAL_STANDARD.md` after research judgment is stable. Review neighboring notes together for repeated sentence templates. In Chinese, watch machine-translated syntax and empty discourse markers.
+Apply `docs/EDITORIAL_STANDARD.md` after research judgment is stable. Review neighboring notes together for repeated sentence templates. Chinese prose should use Chinese sentence structure; keep English for paper/benchmark/model names, standard acronyms, and technical terms that are more precise in English. Remove machine-translated syntax and empty discourse markers.
 
 ## 10. Validation and log
 
