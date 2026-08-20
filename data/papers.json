@@ -1,0 +1,62 @@
+[
+  {
+    "id": "2608.14246",
+    "title": "Polaris: Multi Agentic System for Conversational Enterprise Analytics",
+    "published": "2026-08-14",
+    "primary_problem": "planning_orchestration",
+    "importance": 3,
+    "url": "https://arxiv.org/abs/2608.14246",
+    "research_delta": "Supervisor-led analytics with dynamic online assignment across specialized querying, visualization, and reasoning agents.",
+    "main_caveat": "The current evidence does not cleanly isolate multi-agent coordination from the rest of the system package."
+  },
+  {
+    "id": "2608.09254",
+    "title": "Business Truth, not SQL Accuracy: A Rule-Gated 7B Analytics Agent Outperforms a Direct-Prompted 32B Baseline",
+    "published": "2026-08-10",
+    "primary_problem": "verification_recovery",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2608.09254",
+    "research_delta": "Moves analytics correctness from executable SQL toward business truth, clarification/abstention, schema-drift handling, and deterministic post-execution checks.",
+    "main_caveat": "System scaffolding is unmatched across headline baselines and no component ablation isolates the deterministic verification layer."
+  },
+  {
+    "id": "2607.14386",
+    "title": "CIPHER: A Decoupled Exploration-Selection Framework for Test-Time Scaling of Data Science Agents",
+    "published": "2026-07-15",
+    "primary_problem": "planning_orchestration",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2607.14386",
+    "research_delta": "Decouples generation of multiple initial data-science plans from strategic selection and parallel execution.",
+    "main_caveat": "Benefits must be interpreted together with added test-time branching and selection cost."
+  },
+  {
+    "id": "2606.31041",
+    "title": "A Semantic-Layer-Mediated Agent for Natural Language to SQL over Heterogeneous Enterprise Databases",
+    "published": "2026-06-30",
+    "primary_problem": "planning_semantic_interaction",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2606.31041",
+    "research_delta": "Moves model reasoning from raw physical schemas to a curated semantic layer and compiles a compact semantic query into dialect-specific SQL deterministically.",
+    "main_caveat": "System quality depends on semantic-layer coverage and curation cost; incomplete or incorrect semantic definitions remain a central failure mode."
+  },
+  {
+    "id": "2602.16720",
+    "title": "APEX-SQL: Talking to the data via Agentic Exploration for Text-to-SQL",
+    "published": "2026-02-11",
+    "primary_problem": "data_discovery_grounding",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2602.16720",
+    "research_delta": "Turns schema linking into a hypothesis-verification loop with active profiling of real data before SQL generation.",
+    "main_caveat": "Exploration improves grounding but adds online data access and token cost that must be matched against stronger static-schema controls."
+  },
+  {
+    "id": "2601.15709",
+    "title": "AgentSM: Semantic Memory for Agentic Text-to-SQL",
+    "published": "2026-01-22",
+    "primary_problem": "learning_reuse",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2601.15709",
+    "research_delta": "Stores prior database execution experience as interpretable semantic programs so later queries can reuse database-specific reasoning paths.",
+    "main_caveat": "The key boundary is whether curated/retrieved semantic memory remains reliable under schema and workload drift."
+  }
+]
