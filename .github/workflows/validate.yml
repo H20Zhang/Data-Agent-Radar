@@ -17,5 +17,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate bilingual reading surfaces and seed registry
+      - name: Test time-first and registry contracts
+        run: python -m unittest discover -s tests -v
+      - name: Validate no public operational run artifacts
+        run: python scripts/no_public_runs.py
+      - name: Validate bilingual reading surfaces and registry
         run: python scripts/validate_reading.py

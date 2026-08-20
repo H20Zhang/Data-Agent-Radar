@@ -22,14 +22,13 @@ For Data Agents, explicitly ask whether the claimed gain comes from **better sem
 
 Keep paper titles, datasets, models, metrics, SQL/tool/protocol names, and established technical terms in English when that improves precision/search.
 
-Chinese sentences should otherwise use Chinese syntax and connective structure. Do not build a Chinese sentence by preserving an English clause order and replacing only individual words.
+Chinese sentences should otherwise use Chinese syntax and connective structure. Do not preserve English clause order and replace only individual words.
 
 ## Public entry surfaces
 
-- Lead with the papers, research map, and navigation readers came for; do not add a method manifesto, thesis preamble, or instructions about how long the page should take to read.
-- Navigation labels name destinations, not reading-time estimates.
-- Write entry summaries and research-line conclusions as direct prose. Do not wrap every item in repeated labels such as `Research delta`, `Takeaway`, or `带走的结论`.
-- Keep a fold only when it carries comparison, evidence, mechanism, or caveat that would make the flat list harder to scan. Its summary should name that content rather than promise a reading time.
+- Lead with the current Timeline and the research map readers came for; keep the layer-level time budgets because they explain the depth of each route.
+- Write collapsed Timeline summaries and research-line conclusions as direct, content-specific prose. Do not wrap every item in generic `Research delta`, `Takeaway`, or `带走的结论` labels.
+- Keep inline expansion when comparison, evidence, mechanism, or caveat would otherwise overload the scan layer. Its summary names the finding rather than promising a reading time.
 - Preserve paper, benchmark, dataset, model, metric, and standard acronym names. Translate surrounding grammar instead of translating identifiers.
 
 ## Preferred prose
@@ -57,7 +56,7 @@ Detect pattern density, not banned vocabulary.
 
 ## README fold contract
 
-A README fold should explain the surviving data-work problem, actual control/data flow, closest comparison, decisive evidence, and strongest caveat in 2–4 natural paragraphs.
+A README fold should explain the surviving data-work problem, actual control/data flow, closest comparison, decisive evidence, and strongest caveat without duplicating the full deep note.
 
 ## Epistemic language
 
