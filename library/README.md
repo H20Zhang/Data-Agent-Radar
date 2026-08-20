@@ -18,19 +18,19 @@
 
 ### 1. Static schema → active profiling → semantic layer
 
-[APEX-SQL](https://arxiv.org/abs/2602.16720) → [Semantic-Layer-Mediated Agent](https://arxiv.org/abs/2606.31041)
+[APEX-SQL](../papers/2602.16720.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
 
 **带走的结论：** enterprise data grounding 不只是 schema matching。一个方向让 agent 主动看真实 data distribution 验证假设；另一个方向把 physical schema 隔离在 semantic intermediate representation 之后。
 
 ### 2. Execute successfully → verify business truth
 
-[Business Truth / QueryProof](https://arxiv.org/abs/2608.09254) → [DataSpace](https://arxiv.org/abs/2608.03451) / [DSAgentBench](https://arxiv.org/abs/2608.10366)（evaluation 在 Benchmark Radar）
+[Business Truth / QueryProof](../papers/2608.09254.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dataspace.md) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dsagentbench.md)（evaluation 在 Benchmark Radar）
 
 **带走的结论：** execution success 只是最低门槛。Data Agent 还要处理 business-definition ambiguity、unanswerable questions、artifact verification、OS/tool grounding 与 false success。
 
 ### 3. One-shot plan → plan search / orchestration → reusable experience
 
-[CIPHER](https://arxiv.org/abs/2607.14386) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](https://arxiv.org/abs/2601.15709)
+[CIPHER](../papers/2607.14386.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.md)
 
 **带走的结论：** long-horizon data work 的 control capacity 可以来自 test-time search、specialized-agent orchestration 或 persistent reusable memory；三者应该用更简单 matched controls 分别验证。
 
