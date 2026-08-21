@@ -1,4 +1,5 @@
 import json
+from datetime import date
 from pathlib import Path
 import re
 import sys
@@ -426,7 +427,7 @@ class DataRegistryContractTest(unittest.TestCase):
         )
         errors = validate_registry_projection(records, zh, en)
         self.assertTrue(
-            any("2608-14246" in error and "map_delta" in error for error in errors),
+            any("2608-17007" in error and "map_delta" in error for error in errors),
             errors,
         )
 
@@ -480,8 +481,7 @@ class DataRegistryContractTest(unittest.TestCase):
         records[0].update(
             {
                 "time_provenance": "native_v2",
-                "first_seen_at": "2026-08-20T00:30:00Z",
-                "radar_published_at": "2026-08-20T01:00:00Z",
+                "radar_published_at": "2026-08-21T03:38:27Z",
             }
         )
         zh = (ROOT / "README.md").read_text(encoding="utf-8")
@@ -496,24 +496,8 @@ class DataRegistryContractTest(unittest.TestCase):
 
     def test_native_timeline_acceptance_at_public_synthesis_cutoff_is_inclusive(self):
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
-        records[0] = dict(records[0])
-        records[0].update(
-            {
-                "time_provenance": "native_v2",
-                "first_seen_at": "2026-08-20T00:00:00Z",
-                "radar_published_at": "2026-08-20T00:00:00Z",
-            }
-        )
-        zh = replace_once(
-            (ROOT / "README.md").read_text(encoding="utf-8"),
-            "2026-08-14 · Polaris",
-            "2026-08-20 · Polaris",
-        )
-        en = replace_once(
-            (ROOT / "README.en.md").read_text(encoding="utf-8"),
-            "2026-08-14 · Polaris",
-            "2026-08-20 · Polaris",
-        )
+        zh = (ROOT / "README.md").read_text(encoding="utf-8")
+        en = (ROOT / "README.en.md").read_text(encoding="utf-8")
 
         self.assertEqual([], validate_registry_projection(records, zh, en))
 
@@ -554,18 +538,43 @@ class DataRegistryContractTest(unittest.TestCase):
     def test_periods_are_exact_7_and_30_day_inclusive_windows(self):
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
         text = (ROOT / "README.md").read_text(encoding="utf-8")
-        shifted = text.replace("2026-08-14—2026-08-20", "2026-08-13—2026-08-20", 1)
+        shifted = text.replace("2026-08-15—2026-08-21", "2026-08-14—2026-08-21", 1)
         self.assertTrue(any("inclusive length" in error.lower() for error in validate_period_membership(records, shifted)))
 
 
 class DataPeriodDirectionContractTest(unittest.TestCase):
     def inputs(self) -> tuple[list[dict[str, object]], str, str]:
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
-        return (
-            records,
-            (ROOT / "README.md").read_text(encoding="utf-8"),
-            (ROOT / "README.en.md").read_text(encoding="utf-8"),
-        )
+        records = [
+            record for record in records if record.get("time_provenance") == "legacy_unknown"
+        ]
+        zh = '''<a id="last-7-days"></a>
+### 过去 7 天 · 2026-08-14—2026-08-20
+
+- **`new_signal` · 规划与语义交互 · 动态编排目前只构成整套系统层面的新信号。** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~controller-total-cost-error-propagation" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Polaris](#entry-2608-14246)；置信度：**低**。含义：下一步应匹配控制器，核算 controller total cost error propagation。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
+
+<a id="last-30-days"></a>
+### 过去 30 天 · 2026-07-22—2026-08-20
+
+- **`new_signal` · 规划与语义交互 · 动态编排扩大了系统的控制能力。** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~matched-controller-dtc-off" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Polaris](#entry-2608-14246)；置信度：**低**。含义：需要 matched controller DTC-off 条件对照。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 能否安全作答成为正确性的一部分。** <!-- timefirst:direction key="business-truth-safety-contract" state="new_signal" supports="2608.09254" confidence="medium" implication="separate-business-truth-from-execution~ambiguity-answerability-clarification" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Business Truth](#entry-2608-09254)；置信度：**中**。含义：分别测量 ambiguity answerability clarification。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
+
+<a id="field-map"></a>
+'''
+        en = '''<a id="last-7-days"></a>
+### Last 7 days · 2026-08-14—2026-08-20
+
+- **`new_signal` · Planning & Semantic Interaction · Dynamic orchestration remains a packaged-system signal.** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~controller-total-cost-error-propagation" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> Support: [Polaris](#entry-2608-14246); confidence: **low**. Implication: next match the controller total cost error propagation evidence. Time basis: `legacy_publication_date`, **not Radar acceptance**. Last synthesized: **2026-08-20T00:00:00Z (UTC)**. Prior map evidence: **none**.
+
+<a id="last-30-days"></a>
+### Last 30 days · 2026-07-22—2026-08-20
+
+- **`new_signal` · Planning & Semantic Interaction · Dynamic orchestration expands control capacity.** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~matched-controller-dtc-off" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> Support: [Polaris](#entry-2608-14246); confidence: **low**. Implication: require a matched controller DTC-off comparison. Time basis: `legacy_publication_date`, **not Radar acceptance**. Last synthesized: **2026-08-20T00:00:00Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Safe-to-answer enters correctness.** <!-- timefirst:direction key="business-truth-safety-contract" state="new_signal" supports="2608.09254" confidence="medium" implication="separate-business-truth-from-execution~ambiguity-answerability-clarification" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> Support: [Business Truth](#entry-2608-09254); confidence: **medium**. Implication: measure ambiguity answerability clarification separately. Time basis: `legacy_publication_date`, **not Radar acceptance**. Last synthesized: **2026-08-20T00:00:00Z (UTC)**. Prior map evidence: **none**.
+
+<a id="field-map"></a>
+'''
+        return records, zh, en
 
     def direction_line(self, text: str, index: int = 0) -> str:
         lines = [line for line in text.splitlines() if "timefirst:direction" in line]
@@ -579,12 +588,122 @@ class DataPeriodDirectionContractTest(unittest.TestCase):
             raise AssertionError("missing direction metadata")
         return match.group(0)
 
+    def native_direction_section(
+        self,
+        *,
+        state: str = "new_signal",
+        supports: str = "2608.90000",
+        prior: str = "none",
+        synthesized: str = "2026-08-21T03:00:00Z",
+    ) -> str:
+        visible_supports = (
+            "**none**"
+            if supports == "none"
+            else ", ".join(
+                f"[Native {identity}](#entry-{identity.replace('.', '-', 1)})"
+                for identity in supports.split(",")
+            )
+        )
+        visible_prior = (
+            "**none**" if prior == "none" else "[Field Map](#field-map)"
+        )
+        return (
+            f'- **`{state}` · Planning & Semantic Interaction · Bounded native signal.** '
+            '<!-- timefirst:direction key="native-bounded-direction" '
+            f'state="{state}" supports="{supports}" confidence="medium" '
+            'implication="test-matched-control~matched-control-boundary" '
+            'time_basis="radar_published_at" non_acceptance="radar-acceptance" '
+            f'synthesized="{synthesized}" prior="{prior}" --> '
+            f'Support: {visible_supports}; confidence: **medium**. '
+            'Implication: preserve the matched control boundary evidence. '
+            'Time basis: `radar_published_at`, **Radar acceptance**. '
+            f'Last synthesized: **{synthesized} (UTC)**. '
+            f'Prior map evidence: {visible_prior}.'
+        )
+
+    def parse_native_direction(
+        self,
+        record: dict[str, object],
+        **section_kwargs: str,
+    ) -> list[str]:
+        errors: list[str] = []
+        data_validator._parse_direction_items(
+            "README.en.md",
+            "last-7-days",
+            self.native_direction_section(**section_kwargs),
+            (date(2026, 8, 15), date(2026, 8, 21)),
+            str(section_kwargs.get("synthesized", "2026-08-21T03:00:00Z")),
+            {str(record["id"]): record},
+            errors,
+        )
+        return errors
+
     def move_metadata_to_continuation(self, line: str) -> str:
         metadata = self.direction_metadata(line)
         return f"{line.replace(metadata, '', 1).rstrip()}\n  {metadata}"
 
     def test_repository_structured_period_contracts_are_valid(self):
+        records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
+        zh = (ROOT / "README.md").read_text(encoding="utf-8")
+        en = (ROOT / "README.en.md").read_text(encoding="utf-8")
+        self.assertEqual([], validate_period_contracts(records, zh, en))
+
+    def test_native_radar_acceptance_adapter_allows_one_early_signal(self):
+        record = native_record("2608.90000", "2026-08-21T02:00:00Z")
+        record["direction_keys"] = ["native-bounded-direction"]
+
+        self.assertEqual([], self.parse_native_direction(record))
+
+    def test_native_new_signal_requires_one_early_signal_support_and_no_prior(self):
+        record = native_record("2608.90000", "2026-08-21T02:00:00Z")
+        record["direction_keys"] = ["native-bounded-direction"]
+        record["map_delta"] = "reinforces"
+
+        errors = self.parse_native_direction(record, prior="field-map")
+
+        self.assertTrue(
+            any("radar_published_at adapter requires one early_signal support" in error for error in errors),
+            errors,
+        )
+
+    def test_one_native_support_cannot_be_a_reinforced_direction(self):
+        record = native_record("2608.90000", "2026-08-21T02:00:00Z")
+        record["direction_keys"] = ["native-bounded-direction"]
+
+        errors = self.parse_native_direction(
+            record, state="reinforced", prior="field-map"
+        )
+
+        self.assertTrue(
+            any("reinforced requires at least two" in error for error in errors),
+            errors,
+        )
+
+    def test_native_period_membership_uses_radar_publication_time(self):
+        record = native_record("2608.90000", "2026-08-14T23:59:59Z")
+        record["direction_keys"] = ["native-bounded-direction"]
+
+        errors = self.parse_native_direction(record)
+
+        self.assertTrue(
+            any("outside" in error and "radar_published_at" in error for error in errors),
+            errors,
+        )
+
+    def test_period_windows_advance_with_shared_exact_synthesis_cutoff(self):
         records, zh, en = self.inputs()
+        records[0] = dict(records[0])
+        records[0]["published"] = "2026-08-15"
+        records[0]["published_at"] = "2026-08-15"
+        replacements = (
+            ("2026-08-14—2026-08-20", "2026-08-15—2026-08-21"),
+            ("2026-07-22—2026-08-20", "2026-07-23—2026-08-21"),
+            ("2026-08-20T00:00:00Z", "2026-08-21T03:00:00Z"),
+        )
+        for old, new in replacements:
+            zh = zh.replace(old, new)
+            en = en.replace(old, new)
+
         self.assertEqual([], validate_period_contracts(records, zh, en))
 
     def test_direction_requires_synthesized_metadata(self):
@@ -1457,12 +1576,12 @@ class DataPeriodDirectionContractTest(unittest.TestCase):
         errors = validate_period_contracts(records, zh, en)
         self.assertTrue(any("non_acceptance" in error for error in errors), errors)
 
-    def test_period_time_basis_must_be_legacy_publication_date(self):
+    def test_period_time_basis_must_match_support_provenance(self):
         records, zh, en = self.inputs()
         zh = zh.replace('time_basis="legacy_publication_date"', 'time_basis="radar_published_at"', 1)
         en = en.replace('time_basis="legacy_publication_date"', 'time_basis="radar_published_at"', 1)
         errors = validate_period_contracts(records, zh, en)
-        self.assertTrue(any("legacy_publication_date" in error for error in errors), errors)
+        self.assertTrue(any("native_v2" in error for error in errors), errors)
 
     def test_last_synthesis_timestamp_and_timezone_are_paired(self):
         records, zh, en = self.inputs()

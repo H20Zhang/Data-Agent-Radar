@@ -12,12 +12,42 @@
 >
 > **当前判断：** Data Agent 不应被缩成“会生成 SQL 的 Agent”。真正困难的是把**业务语义、异构数据、工具执行、中间状态、验证与恢复**连接成一个可靠闭环。
 
-最后更新：**2026-08-20**
+最后更新：**2026-08-21**
 
 <a id="timeline"></a><a id="latest"></a>
 ## 最新时间线
 
-> **时间说明。** 这 6 条记录在 v2 之前已经公开；原始 Radar 没有保存首次发现与首次收录时间。本次迁移只保留论文发布日期，因此下方日期与首批时间窗只能看作**按旧发布日期形成的信号**，不能解释成 Radar 的接受时间线。展开任一行即可查看问题、证据、限制、地图判断和深读链接。
+> **时间说明。** 原生 v2 记录按完整 `radar_published_at` 排列；其后 6 条旧记录没有可靠的首次发现或首次收录时间，只保留来源发布日期作为上下文，不能解释成 Radar 接受时间。展开任一行即可查看问题、证据、限制、地图判断和深读链接。
+
+<a id="entry-2608-17007"></a>
+<details><summary>2026-08-21 · SkillEffect · Execution & Transformation <!-- timefirst:area=execution-transformation --> — 执行前检查有界工具降级 <!-- timefirst:delta=checked-bounded-tool-lowering --></summary>
+
+**问题。** 模型生成的数据程序在取得工具执行权前，能否被降为满足硬内存上限的受检实现？完整标题：*SkillEffect: Checked Lowering for Memory-Bounded Agent Tools*。<!-- timefirst:question=memory-bounded-tool-dispatch -->
+
+**证据。** 这 24 个 task–Skill 组合给出 `hard cap bounded completion` 对比：direct 为 0 / 0 / 4 / 20 / 20 / 24，bounded 为 12 / 24 / 24 / 24 / 24 / 24；峰值内存中位数降低 8.45×。<!-- timefirst:evidence=cap-sweep-completion~hard-cap-bounded-completion -->
+
+**限制。** 每类计算仍需人工审计的 relation plugin；XLSX onboarding 约含 `476 lines relation-specific code`，认证还会重复扫描输入，不能解释成任意代码的自动优化。<!-- timefirst:caveat=relation-plugin-coverage~476-lines-relation-specific-code -->
+
+**地图。** `early_signal`；放入执行与转换，在代码生成与执行授权之间增加资源检查边界；不修改稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.17007) · [中文深读](papers/2608.17007.md) · [英文深读](papers/2608.17007.en.md)
+
+</details>
+
+<a id="entry-2608-18050"></a>
+<details><summary>2026-08-21 · StagedWorkspace · Execution & Transformation <!-- timefirst:area=execution-transformation --> — 让双视图共享工作区状态 <!-- timefirst:delta=dual-view-workspace-state --></summary>
+
+**问题。** 解析后的检索视图、原生文件、review diff 与最终交付如何避免引用不同版本的工作产物？完整标题：*StagedWorkspace: A Versioned Workspace for Knowledge-Work Agents*。<!-- timefirst:question=versioned-workspace-state -->
+
+**证据。** 固定 harness 的 read ablation 覆盖 `OfficeQA 133 APEX 452 tasks`；dual view 相对更受限的 single-view arm 在三种模型上均取得更高点估计。<!-- timefirst:evidence=fixed-read-ablation~officeqa-133-apex-452-tasks -->
+
+**限制。** 实验隔离的是双视图访问，而不是内容哈希同步；没有 `synced versus unsynced control`，且 ingestion、后台 parsing 与 sandbox 成本未计入。<!-- timefirst:caveat=versioning-attribution-gap~synced-versus-unsynced-control -->
+
+**地图。** `early_signal`；放入执行与转换，把中间状态、编辑与交付产物连成工作区契约；不修改稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.18050) · [中文深读](papers/2608.18050.md) · [英文深读](papers/2608.18050.en.md)
+
+</details>
 
 <a id="entry-2608-14246"></a>
 <details><summary>2026-08-14 · Polaris · Planning & Semantic Interaction <!-- timefirst:area=planning-semantic-interaction --> — 动态分派专门分析角色 <!-- timefirst:delta=dynamic-specialist-assignment --></summary>
@@ -112,24 +142,25 @@
 <a id="periods"></a><a id="changes"></a>
 ## 7 / 30 天变化
 
-首次迁移窗口按 `published_at` 聚合，只能看作按旧发布日期形成的信号；它不表示 Radar 在这些日期发现或收录了论文。一项工作可以提供新信号，但不能单独证明趋势。
+当前窗口按原生 `radar_published_at` 聚合，并以最后合成时刻作为精确截止。旧记录仍保留在时间线与阅读路径中，但不进入 Radar 接受时间窗。一项工作可以提供新信号，不能单独证明趋势。
 
 <a id="last-7-days"></a>
-### 过去 7 天 · 2026-08-14—2026-08-20
+### 过去 7 天 · 2026-08-15—2026-08-21
 
-*时间基准是旧论文发布日期；它不编码 Radar 接受事件。*
+*时间基准是原生 Radar 接受时间；窗口含首尾两日。*
 
-- **`new_signal` · 规划与语义交互 · 动态编排目前只构成整套系统层面的新信号。** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~controller-total-cost-error-propagation" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Polaris](#entry-2608-14246)；置信度：**低**。含义：下一步应匹配控制器，核算总成本和错误传播，并验证恢复能力（`controller total cost error propagation`）。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
 
 <a id="last-30-days"></a>
-### 过去 30 天 · 2026-07-22—2026-08-20
+### 过去 30 天 · 2026-07-23—2026-08-21
 
-*时间基准是旧论文发布日期；它不编码 Radar 接受事件。*
+*时间基准是原生 Radar 接受时间；窗口含首尾两日。*
 
-- **`new_signal` · 规划与语义交互 · 动态编排扩大了系统的控制能力。** <!-- timefirst:direction key="dynamic-orchestration-package" state="new_signal" supports="2608.14246" confidence="low" implication="match-controller-cost-recovery~matched-controller-dtc-off" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Polaris](#entry-2608-14246)；置信度：**低**。含义：需要与更简单的控制器做条件匹配，关闭 DTC，并报告总成本和真实企业负载（`matched controller DTC-off`）。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
-- **`new_signal` · 验证与恢复 · 能否安全作答成为正确性的一部分。** <!-- timefirst:direction key="business-truth-safety-contract" state="new_signal" supports="2608.09254" confidence="medium" implication="separate-business-truth-from-execution~ambiguity-answerability-clarification" time_basis="legacy_publication_date" non_acceptance="not-radar-acceptance" synthesized="2026-08-20T00:00:00Z" prior="none" --> 支撑：[Business Truth / QueryProof](#entry-2608-09254)；置信度：**中**。含义：应分别评测歧义、可回答性与澄清（`ambiguity answerability clarification`），并单独统计拒答和执行后的检查。时间基准：`legacy_publication_date`，**not Radar acceptance**。最后合成：**2026-08-20T00:00:00Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
 
-两项工作解决不同边界，不能互相算作 `reinforces`。CIPHER 发布于 2026-07-15，不在这个 30 天窗口内；它保留在下方稳定地图与阅读路径中。
+两项工作都落在执行与转换，但方向键不同，不能互相算作 `reinforces`。当前证据只增加早期信号，领域地图保持不变。
 
 <a id="field-map"></a>
 ## 领域地图
@@ -152,7 +183,8 @@
 | 你想回答的问题 | 建议顺序 | 应该学到什么 |
 |---|---|---|
 | **Agent 应如何理解企业数据库？** | APEX-SQL → Semantic-Layer-Mediated Agent → AgentSM | 主动数据分析、语义抽象和数据库专属的可复用知识分别解决不同的对齐问题。 |
-| **如何从“能执行”走到“结果可信”？** | Business Truth / QueryProof → Benchmark Radar 的 Data Agent 评测 | 业务语义、澄清 / 拒答、产物验证和真实计算机执行共同扩大了成功判定范围。 |
+| **受资源约束的执行如何保留可检查的产物状态？** | SkillEffect → StagedWorkspace | 前者在执行授权前检查资源关系，后者把检索视图、原生编辑、diff 与交付放入同一工作区边界；两者都不能替代最终产物验证。 |
+| **如何从“能执行”走到“结果可信”？** | SkillEffect → StagedWorkspace → Business Truth / QueryProof → Benchmark Radar 的 Data Agent 评测 | 资源安全、工作区状态、业务语义和产物验证是不同的成功边界，应分别测量。 |
 | **增加 Agent 规划何时有价值？** | CIPHER → Polaris | 测试时方案搜索和多 Agent 编排提高了控制能力，但必须与更简单、条件匹配且总成本一致的对照系统比较，才能隔离增益。 |
 
 <a id="library"></a>

@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import re
 import sys
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -52,7 +52,7 @@ VISIBLE_DIRECTION_LABELS = {
         "supports": re.compile(r"支撑"),
         "confidence": re.compile(r"置信度"),
         "time basis": re.compile(r"时间基准"),
-        "non-acceptance": re.compile(r"\bnot\s+Radar\s+acceptance\b", re.I),
+        "non-acceptance": re.compile(r"\b(?:not\s+)?Radar\s+acceptance\b", re.I),
         "synthesis": re.compile(r"最后合成"),
         "implication": re.compile(r"含义"),
         "prior": re.compile(r"先验地图证据"),
@@ -62,7 +62,7 @@ VISIBLE_DIRECTION_LABELS = {
         "supports": re.compile(r"\bSupport\b", re.I),
         "confidence": re.compile(r"\bconfidence\b", re.I),
         "time basis": re.compile(r"\bTime basis\b", re.I),
-        "non-acceptance": re.compile(r"\bnot\s+Radar\s+acceptance\b", re.I),
+        "non-acceptance": re.compile(r"\b(?:not\s+)?Radar\s+acceptance\b", re.I),
         "synthesis": re.compile(r"\bLast synthesized\b", re.I),
         "implication": re.compile(r"\bImplication\b", re.I),
         "prior": re.compile(r"\bPrior map evidence\b", re.I),
@@ -78,11 +78,11 @@ VISIBLE_DIRECTION_VALUES = {
         ),
         "time basis": re.compile(
             r"时间基准\s*：\s*`(?P<value>[^`\n]+)`\s*[，,]\s*"
-            r"\*\*not\s+Radar\s+acceptance\*\*",
+            r"\*\*(?:not\s+)?Radar\s+acceptance\*\*",
             re.I,
         ),
         "non-acceptance": re.compile(
-            r"(?P<value>not\s+Radar\s+acceptance)", re.I
+            r"(?P<value>(?:not\s+)?Radar\s+acceptance)", re.I
         ),
         "synthesis": re.compile(
             r"最后合成\s*：\s*\*\*"
@@ -110,11 +110,11 @@ VISIBLE_DIRECTION_VALUES = {
         ),
         "time basis": re.compile(
             r"\bTime basis\s*:\s*`(?P<value>[^`\n]+)`\s*,\s*"
-            r"\*\*not\s+Radar\s+acceptance\*\*",
+            r"\*\*(?:not\s+)?Radar\s+acceptance\*\*",
             re.I,
         ),
         "non-acceptance": re.compile(
-            r"(?P<value>not\s+Radar\s+acceptance)", re.I
+            r"(?P<value>(?:not\s+)?Radar\s+acceptance)", re.I
         ),
         "synthesis": re.compile(
             r"\bLast synthesized\s*:\s*\*\*"
@@ -253,6 +253,31 @@ def _parse_utc(value: object) -> datetime | None:
         )
     except ValueError:
         return None
+
+
+def _rolling_window(anchor: str, cutoff: datetime) -> tuple[date, date]:
+    days = 7 if anchor == "last-7-days" else 30
+    return cutoff.date() - timedelta(days=days - 1), cutoff.date()
+
+
+def _direction_syntheses(text: str) -> list[str]:
+    values: list[str] = []
+    for comment in DIRECTION_COMMENT_RE.finditer(text):
+        attributes = {
+            match.group("name").lower(): match.group("value")
+            for match in DIRECTION_ATTRIBUTE_RE.finditer(comment.group("attributes"))
+        }
+        synthesized = attributes.get("synthesized")
+        if synthesized is not None:
+            values.append(synthesized)
+    return values
+
+
+def _shared_public_synthesis(zh: str, en: str) -> datetime | None:
+    values = _direction_syntheses(zh) + _direction_syntheses(en)
+    if not values or len(set(values)) != 1:
+        return None
+    return _parse_utc(values[0])
 
 
 def _canonical_direction_keys(value: object) -> tuple[str, ...] | None:
@@ -604,7 +629,7 @@ def _expected_timeline_order(
     """Return in-cutoff native acceptances, followed by fixed legacy order."""
 
     native: list[tuple[datetime, str]] = []
-    current_window = EXPECTED_PERIOD_WINDOWS["last-30-days"]
+    current_window = _rolling_window("last-30-days", synthesis_cutoff)
     record_by_id = {
         str(record.get("id")): record
         for record in records
@@ -639,9 +664,9 @@ def validate_registry_projection(
     record_by_anchor = {
         str(record.get("id", "")).replace(".", "-", 1): record for record in records
     }
-    synthesis_cutoff = _parse_utc(SYNTHESIS_TIMESTAMP)
+    synthesis_cutoff = _shared_public_synthesis(zh, en)
     if synthesis_cutoff is None:
-        return ["Data projection has an invalid public synthesis cutoff"]
+        return ["Data projection needs one exact shared public synthesis cutoff"]
     expected_order = _expected_timeline_order(records, synthesis_cutoff)
     for language, text in (("README.md", zh), ("README.en.md", en)):
         chunks = _timeline_chunks(text)
@@ -660,7 +685,7 @@ def validate_registry_projection(
                 if radar_time is not None and radar_time > synthesis_cutoff:
                     errors.append(
                         f"{language}: Timeline identity {identity} is after public "
-                        f"synthesis cutoff {SYNTHESIS_TIMESTAMP}"
+                        f"synthesis cutoff {synthesis_cutoff.strftime('%Y-%m-%dT%H:%M:%SZ')}"
                     )
             visible_chunk = strip_html_comments(chunk)
             summary = _summary_parts(visible_chunk)
@@ -749,10 +774,11 @@ def _parse_direction_items(
     anchor: str,
     section: str,
     window: tuple[date, date],
+    expected_synthesis: str,
     record_by_id: dict[str, dict[str, object]],
     errors: list[str],
 ) -> list[tuple[str, str, tuple[str, ...], str, str, str, str, str, str]]:
-    """Parse one structured legacy-publication direction layer."""
+    """Parse one structured direction layer under its declared time adapter."""
     items: list[
         tuple[str, str, tuple[str, ...], str, str, str, str, str, str]
     ] = []
@@ -860,13 +886,21 @@ def _parse_direction_items(
                 errors.append(
                     f"{location} visible implication does not carry bounded witness {witness}"
                 )
-        if values["time_basis"] != "legacy_publication_date":
+        if values["time_basis"] not in {
+            "legacy_publication_date",
+            "radar_published_at",
+        }:
             errors.append(
-                f"{location} time_basis must be legacy_publication_date, not Radar acceptance"
+                f"{location} time_basis must be legacy_publication_date or radar_published_at"
             )
-        if values["non_acceptance"] != "not-radar-acceptance":
+        expected_acceptance = (
+            "radar-acceptance"
+            if values["time_basis"] == "radar_published_at"
+            else "not-radar-acceptance"
+        )
+        if values["non_acceptance"] != expected_acceptance:
             errors.append(
-                f"{location} non_acceptance contract must be not-radar-acceptance"
+                f"{location} non_acceptance contract must be {expected_acceptance}"
             )
         visible_non_acceptance = re.sub(
             r"[^a-z0-9]+",
@@ -879,10 +913,10 @@ def _parse_direction_items(
             )
         if visible_values.get("time basis", "").lower() != values["time_basis"]:
             errors.append(f"{location} visible time_basis and stable metadata drift")
-        if synthesized_time is None or synthesized != SYNTHESIS_TIMESTAMP:
+        if synthesized_time is None or synthesized != expected_synthesis:
             errors.append(
                 f"{location} synthesized must be the exact UTC synthesis timestamp "
-                f"{SYNTHESIS_TIMESTAMP}"
+                f"{expected_synthesis}"
             )
         visible_synthesis = VISIBLE_SYNTHESIS_VALUE_RE.fullmatch(
             visible_values.get("synthesis", "")
@@ -925,32 +959,59 @@ def _parse_direction_items(
             if record is None:
                 errors.append(f"{location} support identity {identity} has no canonical record")
                 continue
-            if record.get("time_provenance") != "legacy_unknown":
-                errors.append(
-                    f"{location} support identity {identity} is not an honest legacy "
-                    "publication-date record"
-                )
+            time_basis = values["time_basis"]
+            expected_provenance = (
+                "native_v2" if time_basis == "radar_published_at" else "legacy_unknown"
+            )
+            if record.get("time_provenance") != expected_provenance:
+                if expected_provenance == "legacy_unknown":
+                    errors.append(
+                        f"{location} support identity {identity} is not an honest legacy "
+                        "publication-date record"
+                    )
+                else:
+                    errors.append(
+                        f"{location} support identity {identity} is not a native_v2 "
+                        "Radar-acceptance record"
+                    )
             direction_keys = _canonical_direction_keys(record.get("direction_keys"))
             if direction_keys is None or key not in direction_keys:
                 errors.append(
                     f"{location} support identity {identity} direction_keys must "
                     f"include {key}"
                 )
-            published_at = _parse_date(record.get("published_at"))
-            if published_at is None or not window[0] <= published_at <= window[1]:
-                errors.append(
-                    f"{location} support identity {identity} falls outside "
-                    f"{window[0].isoformat()}—{window[1].isoformat()} by published_at"
-                )
-            if (
-                published_at is not None
-                and synthesized_time is not None
-                and published_at > synthesized_time.date()
-            ):
-                errors.append(
-                    f"{location} support identity {identity} was published after "
-                    f"direction synthesized={synthesized} at legacy date precision"
-                )
+            if time_basis == "radar_published_at":
+                evidence_time = _parse_utc(record.get("radar_published_at"))
+                if evidence_time is None or not window[0] <= evidence_time.date() <= window[1]:
+                    errors.append(
+                        f"{location} support identity {identity} falls outside "
+                        f"{window[0].isoformat()}—{window[1].isoformat()} by radar_published_at"
+                    )
+                if (
+                    evidence_time is not None
+                    and synthesized_time is not None
+                    and evidence_time > synthesized_time
+                ):
+                    errors.append(
+                        f"{location} support identity {identity} has radar_published_at "
+                        f"after direction synthesized={synthesized}"
+                    )
+            else:
+                published_at = _parse_date(record.get("published_at"))
+                if published_at is None or not window[0] <= published_at <= window[1]:
+                    errors.append(
+                        f"{location} support identity {identity} falls outside "
+                        f"{window[0].isoformat()}—{window[1].isoformat()} by published_at"
+                    )
+                if (
+                    published_at is not None
+                    and synthesized_time is not None
+                    and published_at > synthesized_time.date()
+                ):
+                    errors.append(
+                        f"{location} support identity {identity} was published after "
+                        f"direction synthesized={synthesized} at legacy date precision"
+                    )
 
         distinct_supports = set(supports)
         if len(distinct_supports) == 1 and DURABLE_TREND_RE.search(visible_block):
@@ -983,6 +1044,52 @@ def _parse_direction_items(
                 errors.append(
                     f"{location} legacy_publication_date adapter requires prior=none"
                 )
+        elif values["time_basis"] == "radar_published_at":
+            support_deltas = {
+                record_by_id.get(identity, {}).get("map_delta")
+                for identity in distinct_supports
+            }
+            if state == "new_signal":
+                if (
+                    len(distinct_supports) != 1
+                    or support_deltas != {"early_signal"}
+                    or prior != "none"
+                ):
+                    errors.append(
+                        f"{location} radar_published_at adapter requires one "
+                        "early_signal support and prior=none for new_signal"
+                    )
+            elif state == "reinforced":
+                if len(distinct_supports) < 2:
+                    errors.append(
+                        f"{location} radar_published_at reinforced requires at least two "
+                        "distinct native supports"
+                    )
+                if prior != "field-map":
+                    errors.append(
+                        f"{location} radar_published_at reinforced requires prior=field-map"
+                    )
+            elif state in {"revised", "splits", "retires"}:
+                required_delta = {
+                    "revised": "revises",
+                    "splits": "splits",
+                    "retires": "retires",
+                }[state]
+                if not distinct_supports or required_delta not in support_deltas:
+                    errors.append(
+                        f"{location} radar_published_at {state} requires a native "
+                        f"{required_delta} support"
+                    )
+                if prior != "field-map":
+                    errors.append(
+                        f"{location} radar_published_at {state} requires prior=field-map"
+                    )
+            elif state == "no_material_change":
+                if distinct_supports or prior != "none":
+                    errors.append(
+                        f"{location} radar_published_at no_material_change requires "
+                        "supports=none and prior=none"
+                    )
 
         visible_prior = visible_values.get("prior")
         if visible_prior == "**none**":
@@ -1058,7 +1165,24 @@ def _validate_period_language(
         ("last-30-days", "field-map"),
     ):
         section = _period_section(text, anchor, next_anchor)
-        expected_window = EXPECTED_PERIOD_WINDOWS[anchor]
+        section_syntheses = _direction_syntheses(section)
+        unique_syntheses = set(section_syntheses)
+        synthesis_time = (
+            _parse_utc(section_syntheses[0])
+            if len(unique_syntheses) == 1 and section_syntheses
+            else None
+        )
+        if synthesis_time is None:
+            errors.append(
+                f"{language}: {anchor} needs one exact valid direction synthesis cutoff"
+            )
+            expected_synthesis = SYNTHESIS_TIMESTAMP
+            fallback_cutoff = _parse_utc(SYNTHESIS_TIMESTAMP)
+            assert fallback_cutoff is not None
+            expected_window = _rolling_window(anchor, fallback_cutoff)
+        else:
+            expected_synthesis = section_syntheses[0]
+            expected_window = _rolling_window(anchor, synthesis_time)
         range_matches = list(RANGE_RE.finditer(strip_html_comments(section)))
         observed_window: tuple[date, date] | None = None
         if len(range_matches) != 1:
@@ -1090,32 +1214,64 @@ def _validate_period_language(
                     f"{expected_window[0].isoformat()}—{expected_window[1].isoformat()}"
                 )
         items = _parse_direction_items(
-            language, anchor, section, expected_window, record_by_id, errors
+            language,
+            anchor,
+            section,
+            expected_window,
+            expected_synthesis,
+            record_by_id,
+            errors,
         )
         direction_layers[anchor] = items
         syntheses[anchor] = _synthesis_identity(language, anchor, items, errors)
 
         actual = tuple(identity for item in items for identity in item[2])
-        expected_records = [
-            record
-            for record in records
-            if _parse_date(record.get("published_at")) is not None
-            and expected_window[0]
-            <= _parse_date(record.get("published_at"))
-            <= expected_window[1]
-        ]
-        expected_records.sort(
-            key=lambda record: (
-                _parse_date(record.get("published_at")),
-                str(record.get("id")),
-            ),
-            reverse=True,
-        )
+        time_bases = {item[5] for item in items}
+        if len(time_bases) != 1:
+            errors.append(f"{language}: {anchor} must use one period time adapter")
+        adapter = next(iter(time_bases), "legacy_publication_date")
+        if adapter == "radar_published_at":
+            expected_records = [
+                record
+                for record in records
+                if record.get("time_provenance") == "native_v2"
+                and _parse_utc(record.get("radar_published_at")) is not None
+                and expected_window[0]
+                <= _parse_utc(record.get("radar_published_at")).date()
+                <= expected_window[1]
+                and synthesis_time is not None
+                and _parse_utc(record.get("radar_published_at")) <= synthesis_time
+            ]
+            expected_records.sort(
+                key=lambda record: (
+                    -_parse_utc(record.get("radar_published_at")).timestamp(),
+                    str(record.get("id")),
+                )
+            )
+            membership_label = "native Radar-acceptance"
+        else:
+            expected_records = [
+                record
+                for record in records
+                if record.get("time_provenance") == "legacy_unknown"
+                and _parse_date(record.get("published_at")) is not None
+                and expected_window[0]
+                <= _parse_date(record.get("published_at"))
+                <= expected_window[1]
+            ]
+            expected_records.sort(
+                key=lambda record: (
+                    _parse_date(record.get("published_at")),
+                    str(record.get("id")),
+                ),
+                reverse=True,
+            )
+            membership_label = "legacy publication-date"
         expected = tuple(str(record.get("id")) for record in expected_records)
         if actual != expected:
             errors.append(
                 f"{language}: {anchor} ordered direction supports {actual} != "
-                f"legacy publication-date membership {expected}"
+                f"{membership_label} membership {expected}"
             )
         if len(actual) != len(set(actual)):
             errors.append(f"{language}: {anchor} repeats support across direction items")
@@ -1179,7 +1335,7 @@ def main() -> int:
     errors: list[str] = []
     errors.extend(validate_no_public_runs(ROOT))
     errors.extend(validate_authoritative_docs(ROOT))
-    required = [ZH, EN, LIB_ZH, LIB_EN, REGISTRY, ROOT / "CURATION.md", ROOT / "COMPACTION.md", ROOT / "SCHEMA.md", ROOT / "digests/README.md", ROOT / "docs/RADAR_AGENT_PROTOCOL.md", ROOT / "docs/EDITORIAL_STANDARD.md", ROOT / "docs/DAILY_WORKFLOW.md"]
+    required = [ZH, EN, LIB_ZH, LIB_EN, REGISTRY, ROOT / "CURATION.md", ROOT / "COMPACTION.md", ROOT / "SCHEMA.md", ROOT / "digests/README.md", ROOT / "digests/README.en.md", ROOT / "docs/RADAR_AGENT_PROTOCOL.md", ROOT / "docs/EDITORIAL_STANDARD.md", ROOT / "docs/DAILY_WORKFLOW.md"]
     for path in required:
         if not path.exists():
             errors.append(f"missing contract: {path.relative_to(ROOT)}")
@@ -1204,7 +1360,13 @@ def main() -> int:
         english_note = note.with_name(note.stem + ".en.md")
         if not note.is_file() or not english_note.is_file():
             errors.append(f"{record.get('id')}: canonical record needs paired local notes")
-    for path in (ZH, EN, LIB_ZH, LIB_EN):
+    for path in (
+        ZH,
+        EN,
+        LIB_ZH,
+        LIB_EN,
+        *sorted((ROOT / "digests").rglob("*.md")),
+    ):
         check_links(path, errors)
     if errors:
         for error in errors:

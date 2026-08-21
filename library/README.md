@@ -24,15 +24,21 @@
 
 ### 2. 成功执行 → 验证业务真实性
 
-[Business Truth / QueryProof](../papers/2608.09254.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dataspace.md) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dsagentbench.md)（评测分析见 Benchmark Radar）
+[SkillEffect](../papers/2608.17007.md) → [StagedWorkspace](../papers/2608.18050.md) → [Business Truth / QueryProof](../papers/2608.09254.md) → [DataSpace](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dataspace.md) / [DSAgentBench](https://github.com/H20Zhang/Agent-Benchmark-Radar/blob/main/benchmarks/dsagentbench.md)（评测分析见 Benchmark Radar）
 
-查询能够执行只是最低门槛。Data Agent 还需要处理业务定义歧义、无法回答的问题、产物验证、操作系统和工具环境的对齐，以及虚假成功。
+查询或代码能够执行只是最低门槛。SkillEffect 检查工具阶段的资源义务，StagedWorkspace 让解析视图、原生文件与 diff 共享工作区边界；Data Agent 仍需继续处理业务定义歧义、无法回答的问题、产物验证与虚假成功。
 
 ### 3. 单次规划 → 规划搜索/编排 → 可复用经验
 
 [CIPHER](../papers/2607.14386.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.md)
 
 长时程数据工作的控制能力可以来自测试时搜索、专用 Agent 编排或持久化可复用记忆；它们各自的收益都需要用更简单、条件匹配的对照系统分别验证。
+
+### 4. 受检降层与准入 → 解析/原生双视图 → 分阶段审阅与发布
+
+[SkillEffect](../papers/2608.17007.md) → [StagedWorkspace](../papers/2608.18050.md)
+
+这条路径连接资源受限执行与持久产物状态，但不是经验上的因果链：前者依赖人工审计的关系插件，后者的匹配实验只隔离双视图访问，没有隔离哈希同步本身。
 
 ## 按年份浏览
 
