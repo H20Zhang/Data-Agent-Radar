@@ -40,9 +40,21 @@ Long-horizon data work can gain control capacity from test-time search, speciali
 
 This path connects resource-bounded execution to persistent artifact state, but it is not an empirical causal chain. The first requires manually audited relation plugins; the second isolates dual-view access, not hash synchronization itself.
 
+### 5. Dataset interface → traced computational campaign → scientific claim review
+
+[Scientific Data Skills](../papers/2608.19625.en.md) → [MAESTRO](../papers/2608.20434.en.md) → [Brain Researcher](../papers/2608.19902.en.md)
+
+A dataset snapshot, computational state, and final claim are distinct boundaries. SciDSK organizes dataset semantics and operating guidance; MAESTRO connects large-scale deterministic scientific tools; Brain Researcher keeps execution artifacts subject to method and claim-scope review.
+
+### 6. Runnable → artifact structure → replayable evidence → authorized publication
+
+[Bolo](../papers/2608.20525.en.md) → [Artic](../papers/2608.21341.en.md) → [KDAF](../papers/2608.20661.en.md) → [TRACE](../papers/2608.20844.en.md)
+
+The four works respectively check inference dataflow, explicit workflow artifacts, enterprise evidence chains, and a production catalog write gate. Together they separate execution, artifacts, provenance, and business truth, but distinct direction keys and controls prevent a reinforced claim.
+
 ## Browse by Year
 
-- **2026:** current emphasis includes enterprise grounding, verification, test-time planning, multi-agent analytics, and reusable semantic memory.
+- **2026:** current emphasis includes enterprise grounding, versioned dataset interfaces, explicit artifact control, verification/publication gates, test-time planning, multi-agent analytics, and reusable semantic memory.
 - **2025 and earlier:** foundational Text-to-SQL, data-science code, and early data-agent systems will be backfilled along research lines rather than as a month-by-month dump.
 
 ## Evaluation ownership

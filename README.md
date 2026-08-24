@@ -12,12 +12,117 @@
 >
 > **当前判断：** Data Agent 不应被缩成“会生成 SQL 的 Agent”。真正困难的是把**业务语义、异构数据、工具执行、中间状态、验证与恢复**连接成一个可靠闭环。
 
-最后更新：**2026-08-21**
+最后更新：**2026-08-24**
 
 <a id="timeline"></a><a id="latest"></a>
 ## 最新时间线
 
 > **时间说明。** 原生 v2 记录按完整 `radar_published_at` 排列；其后 6 条旧记录没有可靠的首次发现或首次收录时间，只保留来源发布日期作为上下文，不能解释成 Radar 接受时间。展开任一行即可查看问题、证据、限制、地图判断和深读链接。
+
+<a id="entry-2608-19625"></a>
+<details><summary>2026-08-24 · Scientific Data Skills · Data Discovery & Grounding <!-- timefirst:area=data-discovery-grounding --> — 把数据集快照封装为 Agent 接口 <!-- timefirst:delta=dataset-snapshot-skill --></summary>
+
+**问题。** 数据集的科学语境、文件结构、使用步骤、质量检查与快照来源如何成为可复用接口？完整标题：*Scientific Data Skills: Enabling Agent-Ready Scientific Data Services at Scale*。<!-- timefirst:question=dataset-snapshot-interface -->
+
+**证据。** 注册并按学科路由的工作流达到 `Hit at one 80.77 percent`，高于把完整 skill 当普通文本检索的 70.19%。<!-- timefirst:evidence=registered-workflow-result~hit-at-one-80.77-percent -->
+
+**限制。** 获胜条件同时改变路由、注册与人工整理的信息；`matched routed raw control absent`，也没有执行数据调用和质量检查。<!-- timefirst:caveat=routing-content-confound~matched-routed-raw-control-absent -->
+
+**地图。** `early_signal`；进入数据发现与对齐，并连接学习与复用；单篇系统证据不修改稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.19625) · [中文深读](papers/2608.19625.md) · [英文深读](papers/2608.19625.en.md)
+
+</details>
+
+<a id="entry-2608-19902"></a>
+<details><summary>2026-08-24 · Brain Researcher · Verification & Recovery <!-- timefirst:area=verification-recovery --> — 让可执行分析接受主张范围审查 <!-- timefirst:delta=governed-claim-workflow --></summary>
+
+**问题。** 分析代码运行后，系统如何保留负结果、限制主张，并阻止未通过科学审查的结论写入记忆？完整标题：*Bringing analytic rigor to agentic AI for science: The Brain Researcher platform for neuroimaging data analysis*。<!-- timefirst:question=scientific-claim-governance -->
+
+**证据。** 工具路由从 23.3% 升至 93.6%，但 `verified groundedness only 22 percent`；多组研究过程明确保留被阻断、拒绝与相互冲突的结果。<!-- timefirst:evidence=routing-claim-boundary~verified-groundedness-only-22-percent -->
+
+**限制。** 主要对照同时移除工具注册表、知识图谱与约束层；自动审查还出现 `sign blind review error missed`，说明人类科学检查仍不可替代。<!-- timefirst:caveat=automated-review-boundary~sign-blind-review-error-missed -->
+
+**地图。** `early_signal`；进入验证与恢复，把执行产物与可辩护科学主张分开；不修改稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.19902) · [中文深读](papers/2608.19902.md) · [英文深读](papers/2608.19902.en.md)
+
+</details>
+
+<a id="entry-2608-20434"></a>
+<details><summary>2026-08-24 · MAESTRO · Execution & Transformation <!-- timefirst:area=execution-transformation --> — 把科学数据 campaign 连接成可追踪闭环 <!-- timefirst:delta=traced-computational-campaign --></summary>
+
+**问题。** 文献、结构清洗、多保真模拟和候选交付能否共享来源、状态、审查与恢复边界？完整标题：*An LLM agent for end-to-end computational materials discovery*。<!-- timefirst:question=traceable-scientific-campaign -->
+
+**证据。** 计算漏斗完成了 `sixty four thousand to eleven candidates`，并用完整过程模拟纠正简单 proxy 排名；候选仍待实验验证。<!-- timefirst:evidence=campaign-funnel-result~sixty-four-thousand-to-eleven-candidates -->
+
+**限制。** 论文没有 `matched single agent pipeline absent` 所指的匹配对照；确定性科学工具完成主要计算，无法隔离多 Agent 或模型编排的因果贡献。<!-- timefirst:caveat=orchestration-attribution-gap~matched-single-agent-pipeline-absent -->
+
+**地图。** `early_signal`；进入执行与转换，并连接数据对齐和科学验证；稳定地图不变。
+
+**链接。** [论文](https://arxiv.org/abs/2608.20434) · [中文深读](papers/2608.20434.md) · [英文深读](papers/2608.20434.en.md)
+
+</details>
+
+<a id="entry-2608-20525"></a>
+<details><summary>2026-08-24 · Bolo · Verification & Recovery <!-- timefirst:area=verification-recovery --> — 在发布模型 pipeline 前检查运行与数据流 <!-- timefirst:delta=runtime-dataflow-admission --></summary>
+
+**问题。** 自动修复的 inference template 如何避免“能运行却没真正使用目标模型或输入”的虚假成功？完整标题：*Bolo: Verified Model Hub for Next-Generation AI Databases*。<!-- timefirst:question=inference-pipeline-admission -->
+
+**证据。** 在筛选后的 Type III 仓库上，`type three runnable 86.08 percent`，高于 mini-swe 的 73.12%，但 API 成本约为 2.5 倍。<!-- timefirst:evidence=selected-repository-repair~type-three-runnable-86.08-percent -->
+
+**限制。** 静态检查只覆盖目标模型、输入与输出的数据流；`task specific output verification future`，因此不能称为行为已验证。<!-- timefirst:caveat=semantic-verification-gap~task-specific-output-verification-future -->
+
+**地图。** `early_signal`；把 runtime success 与最小 artifact dataflow 分开，不改写稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.20525) · [中文深读](papers/2608.20525.md) · [英文深读](papers/2608.20525.en.md)
+
+</details>
+
+<a id="entry-2608-20661"></a>
+<details><summary>2026-08-24 · KDAF · Verification & Recovery <!-- timefirst:area=verification-recovery --> — 分开答案正确性与证据可回放性 <!-- timefirst:delta=provenance-vs-answer-correctness --></summary>
+
+**问题。** 企业财务回答如何同时约束公司实体、期间和来源链，而不把 citation 当成正确答案？完整标题：*Auditable by Construction: An Ontology-Driven Framework for Trustworthy LLM Analytics in Enterprise Finance*。<!-- timefirst:question=enterprise-evidence-replay -->
+
+**证据。** 实验中的 `traceability F1 0.515` 高于 BM25 的 0.463，并消除测试池里的跨公司证据；回答正确率没有提升。<!-- timefirst:evidence=traceability-entity-discipline~traceability-f1-0.515 -->
+
+**限制。** 候选池来自 gold evidence，且 `matched company filter control absent`；零泄漏可能来自简单 metadata filter，而非 ontology / CARP。<!-- timefirst:caveat=ontology-attribution-gap~matched-company-filter-control-absent -->
+
+**地图。** `early_signal`；把 provenance replay 与 business truth 分开，稳定地图不变。
+
+**链接。** [论文](https://arxiv.org/abs/2608.20661) · [中文深读](papers/2608.20661.md) · [英文深读](papers/2608.20661.en.md)
+
+</details>
+
+<a id="entry-2608-20844"></a>
+<details><summary>2026-08-24 · TRACE · Verification & Recovery <!-- timefirst:area=verification-recovery --> — 在目录写入前分离提议与审查 <!-- timefirst:delta=evidence-gated-catalog-write --></summary>
+
+**问题。** 多源属性候选何时有足够的商品身份与证据支撑，可以写入生产目录？完整标题：*TRACE: Agentic Catalog Enrichment with Multi-source Evidence Grounding*。<!-- timefirst:question=catalog-evidence-publication -->
+
+**证据。** 这套系统形成了 `thirty one million SKUs randomized outcome`：部署覆盖 3,100 万个商品，五周 A/B 的结账转化率相对提升 0.48%。<!-- timefirst:evidence=production-package-result~thirty-one-million-skus-randomized-outcome -->
+
+**限制。** 当前四类 verdict 允许 UNVERIFIED 写入，但 `unverified write policy not validated`；没有 Scout-only 或匹配单 Agent 对照。<!-- timefirst:caveat=judge-attribution-gap~unverified-write-policy-not-validated -->
+
+**地图。** `early_signal`；把发现、转换与发布授权拆开，不把 Judge 或多 Agent package 视为已隔离机制。
+
+**链接。** [论文](https://arxiv.org/abs/2608.20844) · [中文深读](papers/2608.20844.md) · [英文深读](papers/2608.20844.en.md)
+
+</details>
+
+<a id="entry-2608-21341"></a>
+<details><summary>2026-08-24 · Artic · Planning & Semantic Interaction <!-- timefirst:area=planning-semantic-interaction --> — 把流程依赖编译为显式产物 <!-- timefirst:delta=artifact-driven-workflow-compilation --></summary>
+
+**问题。** 长流程如何让每一步声明读取、写入与控制转移，而不是依靠 Agent 在上下文中猜测依赖？完整标题：*Natural-Language Workflows Are Not Software Yet: Artifact-Driven Compilation for Reliable Agent Execution*。<!-- timefirst:question=explicit-artifact-control-flow -->
+
+**证据。** 最接近的 Code 对照下，Artic 在三个 executor 上高出 `code control nine thirteen points`，比相对 Text 的 28 点 headline 更能代表 package 增益。<!-- timefirst:evidence=matched-code-control~code-control-nine-thirteen-points -->
+
+**限制。** 编译器同时改变分解、路由、检查门与重试；缺少 `same calls prompts without artifacts` 对照，语义等价仍由模型判断。<!-- timefirst:caveat=bundled-harness-attribution~same-calls-prompts-without-artifacts -->
+
+**地图。** `early_signal`；进入规划与语义交互，并连接执行、验证和恢复；不修改稳定地图。
+
+**链接。** [论文](https://arxiv.org/abs/2608.21341) · [中文深读](papers/2608.21341.md) · [英文深读](papers/2608.21341.en.md)
+
+</details>
 
 <a id="entry-2608-17007"></a>
 <details><summary>2026-08-21 · SkillEffect · Execution & Transformation <!-- timefirst:area=execution-transformation --> — 执行前检查有界工具降级 <!-- timefirst:delta=checked-bounded-tool-lowering --></summary>
@@ -145,22 +250,36 @@
 当前窗口按原生 `radar_published_at` 聚合，并以最后合成时刻作为精确截止。旧记录仍保留在时间线与阅读路径中，但不进入 Radar 接受时间窗。一项工作可以提供新信号，不能单独证明趋势。
 
 <a id="last-7-days"></a>
-### 过去 7 天 · 2026-08-15—2026-08-21
+### 过去 7 天 · 2026-08-18—2026-08-24
 
 *时间基准是原生 Radar 接受时间；窗口含首尾两日。*
 
-- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
-- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 数据发现与对齐 · 数据集知识可以成为版本化 Agent 接口。** <!-- timefirst:direction key="dataset-snapshot-skill-interface" state="new_signal" supports="2608.19625" confidence="medium" implication="isolate-routing-registration-content~matched-routed-raw-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Scientific Data Skills](#entry-2608-19625)；置信度：**中**。含义：需要 `matched routed raw control needed`，分别检验路由、注册与内容。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 科学主张可以在执行后被限定或阻断。** <!-- timefirst:direction key="governed-scientific-claim-workflow" state="new_signal" supports="2608.19902" confidence="medium" implication="retain-human-claim-review~automated-review-missed-directionality" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Brain Researcher](#entry-2608-19902)；置信度：**中**。含义：必须保留人类审查，因为 `automated review missed directionality`。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 可追踪状态可以贯穿完整计算 campaign。** <!-- timefirst:direction key="auditable-computational-campaign" state="new_signal" supports="2608.20434" confidence="medium" implication="compare-orchestration-to-script~same-tools-thresholds-compute-control" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[MAESTRO](#entry-2608-20434)；置信度：**中**。含义：需要 `same tools thresholds compute control` 比较 Agent 与静态 pipeline。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 模型 pipeline 准入需要超过一次成功运行。** <!-- timefirst:direction key="verified-inference-pipeline-admission" state="new_signal" supports="2608.20525" confidence="medium" implication="require-output-level-oracles~runnable-dataflow-not-task-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Bolo](#entry-2608-20525)；置信度：**中**。含义：应分别报告 `runnable dataflow not task correctness`，并增加 output-level oracle。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 来源可回放性不能替代答案正确性。** <!-- timefirst:direction key="ontology-traceable-enterprise-evidence" state="new_signal" supports="2608.20661" confidence="medium" implication="separate-provenance-from-truth~provenance-complete-answer-still-wrong" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[KDAF](#entry-2608-20661)；置信度：**中**。含义：评价必须承认 `provenance complete answer still wrong`。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 目录写入可以晚于证据提议。** <!-- timefirst:direction key="evidence-gated-catalog-enrichment" state="new_signal" supports="2608.20844" confidence="medium" implication="validate-current-write-policy~human-validate-unverified-writes" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[TRACE](#entry-2608-20844)；置信度：**中**。含义：必须 `human validate unverified writes`，才能评价当前发布门槛。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 规划与语义交互 · 中间产物可以成为流程控制接口。** <!-- timefirst:direction key="artifact-driven-workflow-compilation" state="new_signal" supports="2608.21341" confidence="medium" implication="match-total-inference-budget~same-calls-prompts-gates-budget" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Artic](#entry-2608-21341)；置信度：**中**。含义：下一步需要 `same calls prompts gates budget`，才能隔离 artifact materialization。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
 
 <a id="last-30-days"></a>
-### 过去 30 天 · 2026-07-23—2026-08-21
+### 过去 30 天 · 2026-07-26—2026-08-24
 
 *时间基准是原生 Radar 接受时间；窗口含首尾两日。*
 
-- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
-- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-21T03:38:26Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 数据发现与对齐 · 数据集知识可以成为版本化 Agent 接口。** <!-- timefirst:direction key="dataset-snapshot-skill-interface" state="new_signal" supports="2608.19625" confidence="medium" implication="isolate-routing-registration-content~matched-routed-raw-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Scientific Data Skills](#entry-2608-19625)；置信度：**中**。含义：需要 `matched routed raw control needed`，分别检验路由、注册与内容。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 科学主张可以在执行后被限定或阻断。** <!-- timefirst:direction key="governed-scientific-claim-workflow" state="new_signal" supports="2608.19902" confidence="medium" implication="retain-human-claim-review~automated-review-missed-directionality" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Brain Researcher](#entry-2608-19902)；置信度：**中**。含义：必须保留人类审查，因为 `automated review missed directionality`。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 可追踪状态可以贯穿完整计算 campaign。** <!-- timefirst:direction key="auditable-computational-campaign" state="new_signal" supports="2608.20434" confidence="medium" implication="compare-orchestration-to-script~same-tools-thresholds-compute-control" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[MAESTRO](#entry-2608-20434)；置信度：**中**。含义：需要 `same tools thresholds compute control` 比较 Agent 与静态 pipeline。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 模型 pipeline 准入需要超过一次成功运行。** <!-- timefirst:direction key="verified-inference-pipeline-admission" state="new_signal" supports="2608.20525" confidence="medium" implication="require-output-level-oracles~runnable-dataflow-not-task-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Bolo](#entry-2608-20525)；置信度：**中**。含义：应分别报告 `runnable dataflow not task correctness`，并增加 output-level oracle。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 来源可回放性不能替代答案正确性。** <!-- timefirst:direction key="ontology-traceable-enterprise-evidence" state="new_signal" supports="2608.20661" confidence="medium" implication="separate-provenance-from-truth~provenance-complete-answer-still-wrong" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[KDAF](#entry-2608-20661)；置信度：**中**。含义：评价必须承认 `provenance complete answer still wrong`。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 验证与恢复 · 目录写入可以晚于证据提议。** <!-- timefirst:direction key="evidence-gated-catalog-enrichment" state="new_signal" supports="2608.20844" confidence="medium" implication="validate-current-write-policy~human-validate-unverified-writes" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[TRACE](#entry-2608-20844)；置信度：**中**。含义：必须 `human validate unverified writes`，才能评价当前发布门槛。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 规划与语义交互 · 中间产物可以成为流程控制接口。** <!-- timefirst:direction key="artifact-driven-workflow-compilation" state="new_signal" supports="2608.21341" confidence="medium" implication="match-total-inference-budget~same-calls-prompts-gates-budget" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[Artic](#entry-2608-21341)；置信度：**中**。含义：下一步需要 `same calls prompts gates budget`，才能隔离 artifact materialization。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 执行授权前可以加入可检查的资源边界。** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[SkillEffect](#entry-2608-17007)；置信度：**中**。含义：后续应分别测量 resource-safe execution 与最终 artifact correctness（`resource safe execution not artifact correctness`）。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
+- **`new_signal` · 执行与转换 · 双视图让定位、编辑与交付共享工作区边界。** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> 支撑：[StagedWorkspace](#entry-2608-18050)；置信度：**中**。含义：下一步需要 `synced versus unsynced control needed`，才能隔离版本绑定的作用。时间基准：`radar_published_at`，**Radar acceptance**。最后合成：**2026-08-24T02:49:20Z (UTC)**。先验地图证据：**none**。
 
-两项工作都落在执行与转换，但方向键不同，不能互相算作 `reinforces`。当前证据只增加早期信号，领域地图保持不变。
+九项原生支持分别绑定到九个不同方向键；它们都是独立 `new_signal`，不能互相算作 `reinforces`。当前证据只增加早期信号，领域地图保持不变。
 
 <a id="field-map"></a>
 ## 领域地图
@@ -186,6 +305,8 @@
 | **受资源约束的执行如何保留可检查的产物状态？** | SkillEffect → StagedWorkspace | 前者在执行授权前检查资源关系，后者把检索视图、原生编辑、diff 与交付放入同一工作区边界；两者都不能替代最终产物验证。 |
 | **如何从“能执行”走到“结果可信”？** | SkillEffect → StagedWorkspace → Business Truth / QueryProof → Benchmark Radar 的 Data Agent 评测 | 资源安全、工作区状态、业务语义和产物验证是不同的成功边界，应分别测量。 |
 | **增加 Agent 规划何时有价值？** | CIPHER → Polaris | 测试时方案搜索和多 Agent 编排提高了控制能力，但必须与更简单、条件匹配且总成本一致的对照系统比较，才能隔离增益。 |
+| **科学数据如何从发现走到可辩护主张？** | Scientific Data Skills → MAESTRO → Brain Researcher | 数据集语义、计算 campaign 与主张审查必须保留各自的来源和失败边界；可复现执行仍不等于科学真实。 |
+| **产物与证据何时足以获准发布？** | Bolo → Artic → KDAF → TRACE | runtime、artifact dataflow、来源可回放性与 write policy 是不同 gate；任何一层通过都不能自动替代业务真实性。 |
 
 <a id="library"></a>
 ## 研究资料库

@@ -1,5 +1,5 @@
 import json
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 import re
 import sys
@@ -415,8 +415,10 @@ class DataRegistryContractTest(unittest.TestCase):
 
     def test_hidden_map_token_cannot_override_visible_timeline_map(self):
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
+        source_zh = (ROOT / "README.md").read_text(encoding="utf-8")
+        first_identity = data_validator._timeline_chunks(source_zh)[0][0]
         zh = replace_once(
-            (ROOT / "README.md").read_text(encoding="utf-8"),
+            source_zh,
             "**地图。** `early_signal`",
             "**地图。** <!-- `early_signal` --> `none`",
         )
@@ -427,7 +429,7 @@ class DataRegistryContractTest(unittest.TestCase):
         )
         errors = validate_registry_projection(records, zh, en)
         self.assertTrue(
-            any("2608-17007" in error and "map_delta" in error for error in errors),
+            any(first_identity in error and "map_delta" in error for error in errors),
             errors,
         )
 
@@ -477,15 +479,19 @@ class DataRegistryContractTest(unittest.TestCase):
 
     def test_native_timeline_rejects_acceptance_after_public_synthesis_cutoff(self):
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
+        zh = (ROOT / "README.md").read_text(encoding="utf-8")
+        en = (ROOT / "README.en.md").read_text(encoding="utf-8")
+        synthesis_cutoff = data_validator._shared_public_synthesis(zh, en)
+        self.assertIsNotNone(synthesis_cutoff)
         records[0] = dict(records[0])
         records[0].update(
             {
                 "time_provenance": "native_v2",
-                "radar_published_at": "2026-08-21T03:38:27Z",
+                "radar_published_at": (
+                    synthesis_cutoff + timedelta(seconds=1)
+                ).strftime("%Y-%m-%dT%H:%M:%SZ"),
             }
         )
-        zh = (ROOT / "README.md").read_text(encoding="utf-8")
-        en = (ROOT / "README.en.md").read_text(encoding="utf-8")
 
         errors = validate_registry_projection(records, zh, en)
 
@@ -538,7 +544,12 @@ class DataRegistryContractTest(unittest.TestCase):
     def test_periods_are_exact_7_and_30_day_inclusive_windows(self):
         records = json.loads((ROOT / "data" / "papers.json").read_text(encoding="utf-8"))
         text = (ROOT / "README.md").read_text(encoding="utf-8")
-        shifted = text.replace("2026-08-15—2026-08-21", "2026-08-14—2026-08-21", 1)
+        section = data_validator._period_section(text, "last-7-days", "last-30-days")
+        match = data_validator.RANGE_RE.search(section)
+        self.assertIsNotNone(match)
+        start, end = match.group("start"), match.group("end")
+        shifted_start = (date.fromisoformat(start) - timedelta(days=1)).isoformat()
+        shifted = replace_once(text, f"{start}—{end}", f"{shifted_start}—{end}")
         self.assertTrue(any("inclusive length" in error.lower() for error in validate_period_membership(records, shifted)))
 
 

@@ -12,12 +12,117 @@
 >
 > **Current thesis.** A Data Agent is not merely an SQL generator. The difficult systems problem is connecting **business semantics, heterogeneous data, tool execution, intermediate state, verification, and recovery** into a reliable loop.
 
-Last updated: **2026-08-21**
+Last updated: **2026-08-24**
 
 <a id="timeline"></a><a id="latest"></a>
 ## Latest Timeline
 
 > **Time note.** Native-v2 records are ordered by full `radar_published_at`. The six older records that follow have no reliable first-discovery or first-publication times; their source dates remain contextual and are not Radar acceptance chronology. Open any row for the question, evidence, caveat, map judgment, and deep-reading links.
+
+<a id="entry-2608-19625"></a>
+<details><summary>2026-08-24 · Scientific Data Skills · Data Discovery & Grounding <!-- timefirst:area=data-discovery-grounding --> — Package a dataset snapshot as an agent interface <!-- timefirst:delta=dataset-snapshot-skill --></summary>
+
+**Question.** How can scientific context, file organization, operating procedures, quality checks, and snapshot provenance become a reusable dataset interface? Full title: *Scientific Data Skills: Enabling Agent-Ready Scientific Data Services at Scale*. <!-- timefirst:question=dataset-snapshot-interface -->
+
+**Evidence.** The registered, discipline-routed workflow reaches **Hit at one 80.77 percent**, versus 70.19% when the complete skill is retrieved as ordinary text. <!-- timefirst:evidence=registered-workflow-result~hit-at-one-80.77-percent -->
+
+**Caveat.** The winner jointly changes routing, registration, and curated information; a **matched routed raw control absent**, and no dataset invocation or quality check is executed. <!-- timefirst:caveat=routing-content-confound~matched-routed-raw-control-absent -->
+
+**Map.** `early_signal`; enter Data Discovery & Grounding and connect Learning & Reuse. One system paper does not change the stable map.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.19625) · [中文深读](papers/2608.19625.md) · [English note](papers/2608.19625.en.md)
+
+</details>
+
+<a id="entry-2608-19902"></a>
+<details><summary>2026-08-24 · Brain Researcher · Verification & Recovery <!-- timefirst:area=verification-recovery --> — Put executable analyses through claim-scope review <!-- timefirst:delta=governed-claim-workflow --></summary>
+
+**Question.** After analysis code runs, how can a system preserve negative results, bound claims, and prevent unreviewed conclusions from entering memory? Full title: *Bringing analytic rigor to agentic AI for science: The Brain Researcher platform for neuroimaging data analysis*. <!-- timefirst:question=scientific-claim-governance -->
+
+**Evidence.** Tool routing rises from 23.3% to 93.6%, but **verified groundedness only 22 percent**; several research episodes explicitly retain blocked, rejected, and conflicting results. <!-- timefirst:evidence=routing-claim-boundary~verified-groundedness-only-22-percent -->
+
+**Caveat.** The headline removes registry, KG, and constraints together; automated review also has a **sign blind review error missed**, so human scientific inspection remains necessary. <!-- timefirst:caveat=automated-review-boundary~sign-blind-review-error-missed -->
+
+**Map.** `early_signal`; enter Verification & Recovery and separate execution artifacts from defensible scientific claims without changing the stable map.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.19902) · [中文深读](papers/2608.19902.md) · [English note](papers/2608.19902.en.md)
+
+</details>
+
+<a id="entry-2608-20434"></a>
+<details><summary>2026-08-24 · MAESTRO · Execution & Transformation <!-- timefirst:area=execution-transformation --> — Connect a scientific-data campaign into a traced loop <!-- timefirst:delta=traced-computational-campaign --></summary>
+
+**Question.** Can literature, structure cleaning, multi-fidelity simulation, and candidate delivery share provenance, state, review, and recovery boundaries? Full title: *An LLM agent for end-to-end computational materials discovery*. <!-- timefirst:question=traceable-scientific-campaign -->
+
+**Evidence.** The computational funnel completes **sixty four thousand to eleven candidates** and full process simulation corrects simple proxy rankings; candidates still require experiments. <!-- timefirst:evidence=campaign-funnel-result~sixty-four-thousand-to-eleven-candidates -->
+
+**Caveat.** A **matched single agent pipeline absent**; deterministic scientific tools perform the main computation, leaving multi-agent and LLM orchestration causality unresolved. <!-- timefirst:caveat=orchestration-attribution-gap~matched-single-agent-pipeline-absent -->
+
+**Map.** `early_signal`; enter Execution & Transformation and connect grounding with scientific verification, leaving the stable map unchanged.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.20434) · [中文深读](papers/2608.20434.md) · [English note](papers/2608.20434.en.md)
+
+</details>
+
+<a id="entry-2608-20525"></a>
+<details><summary>2026-08-24 · Bolo · Verification & Recovery <!-- timefirst:area=verification-recovery --> — Check runtime and dataflow before pipeline publication <!-- timefirst:delta=runtime-dataflow-admission --></summary>
+
+**Question.** How can an automatically repaired inference template avoid false success that runs without using the target model or input? Full title: *Bolo: Verified Model Hub for Next-Generation AI Databases*. <!-- timefirst:question=inference-pipeline-admission -->
+
+**Evidence.** On selected Type III repositories, **type three runnable 86.08 percent** beats mini-swe's 73.12%, but at about 2.5 times the API cost. <!-- timefirst:evidence=selected-repository-repair~type-three-runnable-86.08-percent -->
+
+**Caveat.** HalluVer checks only static target-model/input/output dataflow; **task specific output verification future**, so the result is not behaviorally verified. <!-- timefirst:caveat=semantic-verification-gap~task-specific-output-verification-future -->
+
+**Map.** `early_signal`; separate runtime success from minimal artifact dataflow without rewriting the stable map.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.20525) · [中文深读](papers/2608.20525.md) · [English note](papers/2608.20525.en.md)
+
+</details>
+
+<a id="entry-2608-20661"></a>
+<details><summary>2026-08-24 · KDAF · Verification & Recovery <!-- timefirst:area=verification-recovery --> — Separate answer correctness from evidence replay <!-- timefirst:delta=provenance-vs-answer-correctness --></summary>
+
+**Question.** How can enterprise-finance answers constrain company, period, and provenance without treating a citation as a correct answer? Full title: *Auditable by Construction: An Ontology-Driven Framework for Trustworthy LLM Analytics in Enterprise Finance*. <!-- timefirst:question=enterprise-evidence-replay -->
+
+**Evidence.** KDAF reaches **traceability F1 0.515**, above BM25's 0.463, and eliminates cross-company evidence in the test pool; answer correctness does not improve. <!-- timefirst:evidence=traceability-entity-discipline~traceability-f1-0.515 -->
+
+**Caveat.** The pool is gold-derived and the **matched company filter control absent**; zero leakage may come from a simple metadata filter rather than ontology / CARP. <!-- timefirst:caveat=ontology-attribution-gap~matched-company-filter-control-absent -->
+
+**Map.** `early_signal`; separate provenance replay from business truth and leave the stable map unchanged.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.20661) · [中文深读](papers/2608.20661.md) · [English note](papers/2608.20661.en.md)
+
+</details>
+
+<a id="entry-2608-20844"></a>
+<details><summary>2026-08-24 · TRACE · Verification & Recovery <!-- timefirst:area=verification-recovery --> — Separate proposal and review before catalog writes <!-- timefirst:delta=evidence-gated-catalog-write --></summary>
+
+**Question.** When does a multi-source attribute candidate have enough product-identity and evidence support to enter a production catalog? Full title: *TRACE: Agentic Catalog Enrichment with Multi-source Evidence Grounding*. <!-- timefirst:question=catalog-evidence-publication -->
+
+**Evidence.** The package produced a **thirty one million SKUs randomized outcome**: a five-week A/B test increased checkout conversion by 0.48% relative, supporting the end-to-end product result. <!-- timefirst:evidence=production-package-result~thirty-one-million-skus-randomized-outcome -->
+
+**Caveat.** The current four-verdict policy writes UNVERIFIED values, but the **unverified write policy not validated**; there is no Scout-only or matched single-agent control. <!-- timefirst:caveat=judge-attribution-gap~unverified-write-policy-not-validated -->
+
+**Map.** `early_signal`; separate discovery, transformation, and publication authority without treating the Judge or multi-agent package as isolated mechanisms.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.20844) · [中文深读](papers/2608.20844.md) · [English note](papers/2608.20844.en.md)
+
+</details>
+
+<a id="entry-2608-21341"></a>
+<details><summary>2026-08-24 · Artic · Planning & Semantic Interaction <!-- timefirst:area=planning-semantic-interaction --> — Compile workflow dependencies into explicit artifacts <!-- timefirst:delta=artifact-driven-workflow-compilation --></summary>
+
+**Question.** How can every step in a long workflow declare its reads, writes, and control transfers instead of making the agent infer dependencies from context? Full title: *Natural-Language Workflows Are Not Software Yet: Artifact-Driven Compilation for Reliable Agent Execution*. <!-- timefirst:question=explicit-artifact-control-flow -->
+
+**Evidence.** Against the closest Code control, Artic gains **code control nine thirteen points** across three executors, a more defensible package result than the 28-point Text headline. <!-- timefirst:evidence=matched-code-control~code-control-nine-thirteen-points -->
+
+**Caveat.** The compiler jointly changes decomposition, routing, gates, and retries; a **same calls prompts without artifacts** control is absent, and semantic equivalence remains model-judged. <!-- timefirst:caveat=bundled-harness-attribution~same-calls-prompts-without-artifacts -->
+
+**Map.** `early_signal`; enter Planning & Semantic Interaction and connect execution, verification, and recovery without changing the stable map.
+
+**Links.** [Primary](https://arxiv.org/abs/2608.21341) · [中文深读](papers/2608.21341.md) · [English note](papers/2608.21341.en.md)
+
+</details>
 
 <a id="entry-2608-17007"></a>
 <details><summary>2026-08-21 · SkillEffect · Execution & Transformation <!-- timefirst:area=execution-transformation --> — Check bounded lowering before execution <!-- timefirst:delta=checked-bounded-tool-lowering --></summary>
@@ -145,22 +250,36 @@ Last updated: **2026-08-21**
 The current windows aggregate native `radar_published_at` and use the last synthesis time as their exact cutoff. Legacy records remain in the Timeline and reading paths but do not enter Radar-acceptance windows. One work can be a signal, but cannot establish a trend by itself.
 
 <a id="last-7-days"></a>
-### Last 7 days · 2026-08-15—2026-08-21
+### Last 7 days · 2026-08-18—2026-08-24
 
 *The time basis is native Radar acceptance; both endpoints are inclusive.*
 
-- **`new_signal` · Execution & Transformation · Put a checked resource boundary before execution authority.** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> Support: [SkillEffect](#entry-2608-17007); confidence: **medium**. Implication: measure resource-safe execution separately from final artifact correctness: `resource safe execution not artifact correctness`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-21T03:38:26Z (UTC)**. Prior map evidence: **none**.
-- **`new_signal` · Execution & Transformation · Let localization, editing, and delivery share a workspace boundary.** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> Support: [StagedWorkspace](#entry-2608-18050); confidence: **medium**. Implication: a `synced versus unsynced control needed` comparison must isolate version binding. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-21T03:38:26Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Data Discovery & Grounding · Dataset knowledge can become a versioned agent interface.** <!-- timefirst:direction key="dataset-snapshot-skill-interface" state="new_signal" supports="2608.19625" confidence="medium" implication="isolate-routing-registration-content~matched-routed-raw-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Scientific Data Skills](#entry-2608-19625); confidence: **medium**. Implication: a `matched routed raw control needed` to separate routing, registration, and content. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Scientific claims can be bounded or blocked after execution.** <!-- timefirst:direction key="governed-scientific-claim-workflow" state="new_signal" supports="2608.19902" confidence="medium" implication="retain-human-claim-review~automated-review-missed-directionality" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Brain Researcher](#entry-2608-19902); confidence: **medium**. Implication: retain human review because `automated review missed directionality`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Traceable state can span a complete computational campaign.** <!-- timefirst:direction key="auditable-computational-campaign" state="new_signal" supports="2608.20434" confidence="medium" implication="compare-orchestration-to-script~same-tools-thresholds-compute-control" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [MAESTRO](#entry-2608-20434); confidence: **medium**. Implication: compare agents with a script using the `same tools thresholds compute control`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Model-pipeline admission needs more than one successful run.** <!-- timefirst:direction key="verified-inference-pipeline-admission" state="new_signal" supports="2608.20525" confidence="medium" implication="require-output-level-oracles~runnable-dataflow-not-task-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Bolo](#entry-2608-20525); confidence: **medium**. Implication: report `runnable dataflow not task correctness` and add output-level oracles. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Replayable provenance does not replace answer correctness.** <!-- timefirst:direction key="ontology-traceable-enterprise-evidence" state="new_signal" supports="2608.20661" confidence="medium" implication="separate-provenance-from-truth~provenance-complete-answer-still-wrong" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [KDAF](#entry-2608-20661); confidence: **medium**. Implication: evaluation must admit that a `provenance complete answer still wrong`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Catalog writes can follow evidence proposals.** <!-- timefirst:direction key="evidence-gated-catalog-enrichment" state="new_signal" supports="2608.20844" confidence="medium" implication="validate-current-write-policy~human-validate-unverified-writes" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [TRACE](#entry-2608-20844); confidence: **medium**. Implication: **human validate UNVERIFIED writes** before treating the current publication gate as evidence. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Planning & Semantic Interaction · Intermediate artifacts can become workflow-control interfaces.** <!-- timefirst:direction key="artifact-driven-workflow-compilation" state="new_signal" supports="2608.21341" confidence="medium" implication="match-total-inference-budget~same-calls-prompts-gates-budget" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Artic](#entry-2608-21341); confidence: **medium**. Implication: use the `same calls prompts gates budget` to isolate artifact materialization. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Put a checked resource boundary before execution authority.** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [SkillEffect](#entry-2608-17007); confidence: **medium**. Implication: measure resource-safe execution separately from final artifact correctness: `resource safe execution not artifact correctness`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Let localization, editing, and delivery share a workspace boundary.** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [StagedWorkspace](#entry-2608-18050); confidence: **medium**. Implication: a `synced versus unsynced control needed` comparison must isolate version binding. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
 
 <a id="last-30-days"></a>
-### Last 30 days · 2026-07-23—2026-08-21
+### Last 30 days · 2026-07-26—2026-08-24
 
 *The time basis is native Radar acceptance; both endpoints are inclusive.*
 
-- **`new_signal` · Execution & Transformation · Put a checked resource boundary before execution authority.** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> Support: [SkillEffect](#entry-2608-17007); confidence: **medium**. Implication: measure resource-safe execution separately from final artifact correctness: `resource safe execution not artifact correctness`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-21T03:38:26Z (UTC)**. Prior map evidence: **none**.
-- **`new_signal` · Execution & Transformation · Let localization, editing, and delivery share a workspace boundary.** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-21T03:38:26Z" prior="none" --> Support: [StagedWorkspace](#entry-2608-18050); confidence: **medium**. Implication: a `synced versus unsynced control needed` comparison must isolate version binding. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-21T03:38:26Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Data Discovery & Grounding · Dataset knowledge can become a versioned agent interface.** <!-- timefirst:direction key="dataset-snapshot-skill-interface" state="new_signal" supports="2608.19625" confidence="medium" implication="isolate-routing-registration-content~matched-routed-raw-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Scientific Data Skills](#entry-2608-19625); confidence: **medium**. Implication: a `matched routed raw control needed` to separate routing, registration, and content. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Scientific claims can be bounded or blocked after execution.** <!-- timefirst:direction key="governed-scientific-claim-workflow" state="new_signal" supports="2608.19902" confidence="medium" implication="retain-human-claim-review~automated-review-missed-directionality" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Brain Researcher](#entry-2608-19902); confidence: **medium**. Implication: retain human review because `automated review missed directionality`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Traceable state can span a complete computational campaign.** <!-- timefirst:direction key="auditable-computational-campaign" state="new_signal" supports="2608.20434" confidence="medium" implication="compare-orchestration-to-script~same-tools-thresholds-compute-control" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [MAESTRO](#entry-2608-20434); confidence: **medium**. Implication: compare agents with a script using the `same tools thresholds compute control`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Model-pipeline admission needs more than one successful run.** <!-- timefirst:direction key="verified-inference-pipeline-admission" state="new_signal" supports="2608.20525" confidence="medium" implication="require-output-level-oracles~runnable-dataflow-not-task-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Bolo](#entry-2608-20525); confidence: **medium**. Implication: report `runnable dataflow not task correctness` and add output-level oracles. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Replayable provenance does not replace answer correctness.** <!-- timefirst:direction key="ontology-traceable-enterprise-evidence" state="new_signal" supports="2608.20661" confidence="medium" implication="separate-provenance-from-truth~provenance-complete-answer-still-wrong" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [KDAF](#entry-2608-20661); confidence: **medium**. Implication: evaluation must admit that a `provenance complete answer still wrong`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Verification & Recovery · Catalog writes can follow evidence proposals.** <!-- timefirst:direction key="evidence-gated-catalog-enrichment" state="new_signal" supports="2608.20844" confidence="medium" implication="validate-current-write-policy~human-validate-unverified-writes" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [TRACE](#entry-2608-20844); confidence: **medium**. Implication: **human validate UNVERIFIED writes** before treating the current publication gate as evidence. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Planning & Semantic Interaction · Intermediate artifacts can become workflow-control interfaces.** <!-- timefirst:direction key="artifact-driven-workflow-compilation" state="new_signal" supports="2608.21341" confidence="medium" implication="match-total-inference-budget~same-calls-prompts-gates-budget" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [Artic](#entry-2608-21341); confidence: **medium**. Implication: use the `same calls prompts gates budget` to isolate artifact materialization. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Put a checked resource boundary before execution authority.** <!-- timefirst:direction key="checked-bounded-tool-lowering" state="new_signal" supports="2608.17007" confidence="medium" implication="separate-resource-safety-from-delivery~resource-safe-execution-not-artifact-correctness" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [SkillEffect](#entry-2608-17007); confidence: **medium**. Implication: measure resource-safe execution separately from final artifact correctness: `resource safe execution not artifact correctness`. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
+- **`new_signal` · Execution & Transformation · Let localization, editing, and delivery share a workspace boundary.** <!-- timefirst:direction key="dual-view-versioned-workspace" state="new_signal" supports="2608.18050" confidence="medium" implication="test-version-binding-separately~synced-versus-unsynced-control-needed" time_basis="radar_published_at" non_acceptance="radar-acceptance" synthesized="2026-08-24T02:49:20Z" prior="none" --> Support: [StagedWorkspace](#entry-2608-18050); confidence: **medium**. Implication: a `synced versus unsynced control needed` comparison must isolate version binding. Time basis: `radar_published_at`, **Radar acceptance**. Last synthesized: **2026-08-24T02:49:20Z (UTC)**. Prior map evidence: **none**.
 
-Both works sit in Execution & Transformation, but their direction keys differ, so neither `reinforces` the other. The evidence adds early signals and leaves the Field Map unchanged.
+The nine native supports bind to nine distinct direction keys. Each remains an independent `new_signal`; none `reinforces` another. The evidence adds early signals and leaves the Field Map unchanged.
 
 <a id="field-map"></a>
 ## Field Map
@@ -186,6 +305,8 @@ Both works sit in Execution & Transformation, but their direction keys differ, s
 | **How can resource-bounded execution preserve inspectable artifact state?** | SkillEffect → StagedWorkspace | The first checks resource relations before execution authority; the second puts retrieval views, native edits, diffs, and delivery on one workspace boundary. Neither replaces final-artifact validation. |
 | **How should data work become reliable rather than merely executable?** | SkillEffect → StagedWorkspace → Business Truth / QueryProof → Data Agent evaluation in Benchmark Radar | Resource safety, workspace state, business meaning, and artifact verification are distinct success boundaries and should be measured separately. |
 | **When does more agentic planning help?** | CIPHER → Polaris | Test-time plan search and multi-agent orchestration add control capacity, but need a simpler matched control and total-cost accounting to isolate value. |
+| **How should scientific data move from discovery to a defensible claim?** | Scientific Data Skills → MAESTRO → Brain Researcher | Dataset semantics, computational campaigns, and claim review need separate provenance and failure boundaries; reproducible execution is still not scientific truth. |
+| **When are artifacts and evidence ready for publication?** | Bolo → Artic → KDAF → TRACE | Runtime, artifact dataflow, provenance replay, and write policy are distinct gates; passing one does not replace business truth. |
 
 <a id="library"></a>
 ## Research Library
