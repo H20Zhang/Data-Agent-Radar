@@ -30,9 +30,9 @@ Query or code execution is only a floor. SkillEffect checks tool-stage resource 
 
 ### 3. One-shot plan → plan search / orchestration → reusable experience
 
-[CIPHER](../papers/2607.14386.en.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.en.md)
+[CIPHER](../papers/2607.14386.en.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [VAT decomposition](../papers/2608.23395.en.md) → [AgentSM](../papers/2601.15709.en.md)
 
-Long-horizon data work can gain control capacity from test-time search, specialized-agent orchestration, or persistent reusable memory. These should be tested against simpler matched controls separately.
+Long-horizon data work can gain control capacity from test-time search, specialized-agent orchestration, dependency-layer partitioning, or persistent memory. The VAT pilot's negative result shows why a higher intermediate point estimate still needs budget, multiple-testing, and fault-timing controls before decomposition receives causal credit.
 
 ### 4. Checked lowering and admission → parsed/native dual view → staged review and publication
 

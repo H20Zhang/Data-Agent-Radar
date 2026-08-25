@@ -30,9 +30,9 @@
 
 ### 3. 单次规划 → 规划搜索/编排 → 可复用经验
 
-[CIPHER](../papers/2607.14386.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [AgentSM](../papers/2601.15709.md)
+[CIPHER](../papers/2607.14386.md) → [Polaris](https://arxiv.org/abs/2608.14246) → [VAT decomposition](../papers/2608.23395.md) → [AgentSM](../papers/2601.15709.md)
 
-长时程数据工作的控制能力可以来自测试时搜索、专用 Agent 编排或持久化可复用记忆；它们各自的收益都需要用更简单、条件匹配的对照系统分别验证。
+长时程数据工作的控制能力可以来自测试时搜索、专用 Agent 编排、依赖层分区或持久化记忆。VAT pilot 的负面结果强调：即使中间粒度点估计最高，也必须先排除预算、multiple testing 与故障注入时序，才能把收益归因给分工。
 
 ### 4. 受检降层与准入 → 解析/原生双视图 → 分阶段审阅与发布
 

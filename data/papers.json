@@ -1,5 +1,23 @@
 [
   {
+    "id": "2608.23395",
+    "title": "Right-Sizing LLM-Agent Decomposition in VAT Determination: A Pilot Controlled Sweep",
+    "published": "2026-08-24",
+    "published_at": "2026-08-24T15:40:15Z",
+    "first_seen_at": "2026-08-25T02:52:01Z",
+    "radar_published_at": "2026-08-25T03:15:40Z",
+    "time_provenance": "native_v2",
+    "map_delta": "early_signal",
+    "direction_keys": ["dependency-layer-decomposition-control"],
+    "status": "public",
+    "note_path": "papers/2608.23395.md",
+    "primary_problem": "planning_orchestration",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2608.23395",
+    "research_delta": "Holds a bounded VAT activity surface and orchestrator fixed while varying worker partitioning, then tests token-budget and injected-failure alternatives against repository-precommitted falsification criteria.",
+    "main_caveat": "No headline comparison survived Holm correction; token matching remained inconclusive, and content-fault comparisons are confounded by when corruption enters each partition's handoffs."
+  },
+  {
     "id": "2608.21341",
     "title": "Natural-Language Workflows Are Not Software Yet: Artifact-Driven Compilation for Reliable Agent Execution",
     "published": "2026-08-21",
