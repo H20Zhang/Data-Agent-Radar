@@ -1,5 +1,23 @@
 [
   {
+    "id": "2608.22651",
+    "title": "Iteration Without Elaboration: A Simple ReAct Architecture Suffices for Text-to-SQL Generation",
+    "published": "2026-08-23",
+    "published_at": "2026-08-23T23:16:20Z",
+    "first_seen_at": "2026-08-27T02:07:07Z",
+    "radar_published_at": "2026-08-27T02:07:07Z",
+    "time_provenance": "native_v2",
+    "map_delta": "early_signal",
+    "direction_keys": ["adaptive-probing-typed-relational-control"],
+    "status": "public",
+    "note_path": "papers/2608.22651.md",
+    "primary_problem": "planning_semantic_interaction",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2608.22651",
+    "research_delta": "Separates database grounding from query composition with a matched three-stage control: one-shot raw SQL, raw-SQL ReAct probing, then a typed relational DSL; the component gains flip across EHR-SQL and BIRD, exposing distinct grounding and composition bottlenecks.",
+    "main_caveat": "The component effects are benchmark-dependent, EHR-SQL unanswerables are excluded, and every system is scored by a fixed LLM judge; cross-system baselines also differ in retrieval assets and implementation details, so the evidence does not establish universal architecture superiority or business-semantic correctness."
+  },
+  {
     "id": "2608.23395",
     "title": "Right-Sizing LLM-Agent Decomposition in VAT Determination: A Pilot Controlled Sweep",
     "published": "2026-08-24",

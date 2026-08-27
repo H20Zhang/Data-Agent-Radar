@@ -16,11 +16,11 @@
 
 ## 按研究路线浏览
 
-### 1. 静态数据库模式 → 主动数据分析 → 语义层
+### 1. 静态数据库模式 → 主动探查 → typed query control → 语义层
 
-[APEX-SQL](../papers/2602.16720.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
+[APEX-SQL](../papers/2602.16720.md) → [ReAct-SQL](../papers/2608.22651.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
 
-企业数据对齐不只是数据库模式匹配。APEX-SQL 让 Agent 主动检查真实的数据分布来验证假设；Semantic-Layer-Mediated Agent 则用语义中间表示隔离物理数据库模式。
+企业数据对齐不只是数据库模式匹配。APEX-SQL 让 Agent 主动检查真实数据来验证 schema 假设；ReAct-SQL 进一步用 matched ablation 把 **probe policy** 与 **typed relational representation** 拆开，显示 grounding 与 composition 的主要瓶颈会随 workload 改变；Semantic-Layer-Mediated Agent 则把业务概念放进更重的语义中间层。三者对应不同控制边界，不能简单解释为“结构越多越好”。
 
 ### 2. 成功执行 → 验证业务真实性
 
@@ -54,7 +54,7 @@
 
 ## 按年份浏览
 
-- **2026：** 当前重点包括企业数据对齐、版本化数据集接口、显式产物控制、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
+- **2026：** 当前重点包括企业数据对齐、主动数据库探查、typed query control、版本化数据集接口、显式产物控制、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
 - **2025 及更早：** 后续将沿研究路线补充作为基础或先驱的 Text-to-SQL、数据科学代码和早期 Data Agent 系统，而不是按月份堆叠列表。
 
 ## 与评测仓库的分工
