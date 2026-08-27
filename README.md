@@ -26,7 +26,7 @@
 
 **证据。** 同一三阶段消融中，`EHR iteration gain 26.23 points`（95% CI [+22.91,+29.66]，p≈10^-47），而 BIRD 的 iteration 仅 +0.60pp；反过来 DSL 在 BIRD 上再带来 +5.42pp（p=.006），在 EHR 上只有 +1.71pp。<!-- timefirst:evidence=matched-component-ablation~ehr-iteration-gain-26.23-points -->
 
-**限制。** `BIRD iteration and EHR DSL nonsignificant`；EHR-SQL 排除了 unanswerable subset，评分使用固定 LLM judge，且跨系统 baseline 的 retriever、schema descriptions 与 backbone implementation 并不完全匹配。<!-- timefirst:caveat=benchmark-dependent-attribution~bird-iteration-and-ehr-dsl-nonsignificant -->
+**限制。** 主要限制是：`BIRD iteration and EHR DSL nonsignificant`；EHR-SQL 排除了 unanswerable subset，评分使用固定 LLM judge，且跨系统 baseline 的 retriever、schema descriptions 与 backbone implementation 并不完全匹配。<!-- timefirst:caveat=benchmark-dependent-attribution~bird-iteration-and-ehr-dsl-nonsignificant -->
 
 **地图。** `early_signal`；进入规划与语义交互，并连接执行与转换。它把 probe policy 与 typed execution representation 拆成可检验控制面，但单篇证据不修改稳定地图。
 
