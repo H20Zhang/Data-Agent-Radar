@@ -22,7 +22,7 @@
 <a id="entry-2608-22651"></a>
 <details><summary>2026-08-27 · ReAct-SQL · Planning & Semantic Interaction <!-- timefirst:area=planning-semantic-interaction --> — 拆开 grounding 与 composition 的控制层 <!-- timefirst:delta=adaptive-probing-typed-relational-control --></summary>
 
-**问题。** 在固定 backbone、hints 与 judge 后，简单的数据库主动探查和 typed relational action space 能否分别隔离 Text-to-SQL 的 grounding 与 composition 瓶颈？完整标题：*Iteration Without Elaboration: A Simple ReAct Architecture Suffices for Text-to-SQL Generation*。<!-- timefirst:question=grounding-composition-factorization -->
+**问题。** 在固定基础模型、提示信息与评判器后，简单的数据库主动探查和类型化关系动作空间能否分别隔离 Text-to-SQL 的 grounding 与 composition 瓶颈？完整标题：*Iteration Without Elaboration: A Simple ReAct Architecture Suffices for Text-to-SQL Generation*。<!-- timefirst:question=grounding-composition-factorization -->
 
 **证据。** 同一三阶段消融中，`EHR iteration gain 26.23 points`（95% CI [+22.91,+29.66]，p≈10^-47），而 BIRD 的 iteration 仅 +0.60pp；反过来 DSL 在 BIRD 上再带来 +5.42pp（p=.006），在 EHR 上只有 +1.71pp。<!-- timefirst:evidence=matched-component-ablation~ehr-iteration-gain-26.23-points -->
 
