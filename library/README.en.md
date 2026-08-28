@@ -46,15 +46,15 @@ This path connects resource-bounded execution to persistent artifact state, but 
 
 A dataset snapshot, computational state, and final claim are distinct boundaries. SciDSK organizes dataset semantics and operating guidance; MAESTRO connects large-scale deterministic scientific tools; Brain Researcher keeps execution artifacts subject to method and claim-scope review.
 
-### 6. Runnable → artifact structure → replayable evidence → authorized publication
+### 6. Runnable → artifact structure → replayable evidence → reproducible answer → authorized publication
 
-[Bolo](../papers/2608.20525.en.md) → [Artic](../papers/2608.21341.en.md) → [KDAF](../papers/2608.20661.en.md) → [TRACE](../papers/2608.20844.en.md)
+[Bolo](../papers/2608.20525.en.md) → [Artic](../papers/2608.21341.en.md) → [KDAF](../papers/2608.20661.en.md) → [BLIP](../papers/2608.25210.en.md) → [TRACE](../papers/2608.20844.en.md)
 
-The four works respectively check inference dataflow, explicit workflow artifacts, enterprise evidence chains, and a production catalog write gate. Together they separate execution, artifacts, provenance, and business truth, but distinct direction keys and controls prevent a reinforced claim.
+This path separates five gates: inference dataflow, explicit workflow artifacts, enterprise evidence chains, executable answer-reproduction provenance, and production-write authority. BLIP adds a stronger check than relevance-style provenance—whether deleting the rest of the input still reproduces the answer—but does not establish answer correctness or business truth. The five works have distinct direction keys and controls, so they do not form a reinforced claim.
 
 ## Browse by Year
 
-- **2026:** current emphasis includes enterprise grounding, active database probing, typed query control, versioned dataset interfaces, explicit artifact control, verification/publication gates, test-time planning, multi-agent analytics, and reusable semantic memory.
+- **2026:** current emphasis includes enterprise grounding, active database probing, typed query control, versioned dataset interfaces, explicit artifact control, verifiable provenance, verification/publication gates, test-time planning, multi-agent analytics, and reusable semantic memory.
 - **2025 and earlier:** foundational Text-to-SQL, data-science code, and early data-agent systems will be backfilled along research lines rather than as a month-by-month dump.
 
 ## Evaluation ownership

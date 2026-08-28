@@ -46,15 +46,15 @@
 
 数据集快照、计算状态和最终主张是三个不同边界。SciDSK 组织数据集语义与使用指导；MAESTRO 连接大规模确定性科学工具；Brain Researcher 让执行产物继续接受方法与主张范围审查。
 
-### 6. 能运行 → 产物有结构 → 证据可回放 → 获准发布
+### 6. 能运行 → 产物有结构 → 证据可回放 → 答案可复现 → 获准发布
 
-[Bolo](../papers/2608.20525.md) → [Artic](../papers/2608.21341.md) → [KDAF](../papers/2608.20661.md) → [TRACE](../papers/2608.20844.md)
+[Bolo](../papers/2608.20525.md) → [Artic](../papers/2608.21341.md) → [KDAF](../papers/2608.20661.md) → [BLIP](../papers/2608.25210.md) → [TRACE](../papers/2608.20844.md)
 
-四项工作分别检查 inference dataflow、显式 workflow artifact、企业证据来源链与生产目录 write gate。它们共同说明需要拆分执行、产物、来源与业务真实性；但方向键与控制条件不同，不能合并成强化结论。
+这条路径拆分五个不同 gate：inference dataflow、显式 workflow artifact、企业来源链、可执行的 answer-reproduction provenance、生产写入授权。BLIP 比 relevance-style provenance 多了一个“删掉其余输入后还能否复现答案”的检查，但仍不证明答案正确或业务真实；五项工作的方向键与控制条件不同，不能合并成强化结论。
 
 ## 按年份浏览
 
-- **2026：** 当前重点包括企业数据对齐、主动数据库探查、typed query control、版本化数据集接口、显式产物控制、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
+- **2026：** 当前重点包括企业数据对齐、主动数据库探查、typed query control、版本化数据集接口、显式产物控制、可验证 provenance、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
 - **2025 及更早：** 后续将沿研究路线补充作为基础或先驱的 Text-to-SQL、数据科学代码和早期 Data Agent 系统，而不是按月份堆叠列表。
 
 ## 与评测仓库的分工

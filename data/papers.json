@@ -1,5 +1,23 @@
 [
   {
+    "id": "2608.25210",
+    "title": "Bolt-on, Verifiable Provenance for LLM-Powered Data Processing",
+    "published": "2026-08-25",
+    "published_at": "2026-08-25T22:59:08Z",
+    "first_seen_at": "2026-08-28T02:33:25Z",
+    "radar_published_at": "2026-08-28T02:33:25Z",
+    "time_provenance": "native_v2",
+    "map_delta": "early_signal",
+    "direction_keys": ["verifiable-answer-provenance"],
+    "status": "public",
+    "note_path": "papers/2608.25210.md",
+    "primary_problem": "verification_recovery",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2608.25210",
+    "research_delta": "Turns LLM data-processing provenance from relevance hints into an executable reproduction witness: identify a small input subset that makes the same model reproduce an equivalent answer, with adaptive search designed to keep verification cost near the original query on tested workloads.",
+    "main_caveat": "BLIP verifies answer reproducibility rather than answer correctness or business truth; an incorrect or ambiguous full-input answer remains unsafe, non-monotone aggregation can admit misleading minimal subsets, and the current method stops at a single LLM invocation rather than an end-to-end agent workflow."
+  },
+  {
     "id": "2608.22651",
     "title": "Iteration Without Elaboration: A Simple ReAct Architecture Suffices for Text-to-SQL Generation",
     "published": "2026-08-23",
