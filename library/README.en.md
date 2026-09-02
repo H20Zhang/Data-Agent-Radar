@@ -12,7 +12,7 @@ Papers are organized by research problem, research line, and year; “new this w
 | **Planning & Semantic Interaction** | semantic layers, intermediate representations, analytic plans, query decomposition |
 | **Execution & Transformation** | SQL / Python / notebook / DB / API / OS tool orchestration |
 | **Verification & Recovery** | business truth, artifact validation, clarification/abstention, failure recovery |
-| **Learning & Reuse** | database-specific memory, workflow/skill reuse, accumulated experience |
+| **Learning & Reuse** | database-specific memory, workflow/skill reuse, accumulated experience, cross-query shared structure |
 
 ## Browse by Research Line
 
@@ -52,9 +52,15 @@ A dataset snapshot, computational state, and final claim are distinct boundaries
 
 This path separates five gates: inference dataflow, explicit workflow artifacts, enterprise evidence chains, executable answer-reproduction provenance, and production-write authority. BLIP adds a stronger check than relevance-style provenance—whether deleting the rest of the input still reproduces the answer—but does not establish answer correctness or business truth. The five works have distinct direction keys and controls, so they do not form a reinforced claim.
 
+### 7. Re-read raw documents → workload-adaptive structure → persistent reuse
+
+[Agentic Data Cracking](../papers/2608.31082.en.md) → [AgentSM](../papers/2601.15709.en.md)
+
+Both let later requests inherit prior state, but the reusable object differs. Agentic Data Cracking progressively materializes already-opened unstructured documents into shared evidence-backed data structure; AgentSM reuses database-specific execution semantic programs. The former is bounded by query locality, the missing demand-only-cache control, and corpus invalidation, while the latter is dominated by schema/workload drift. “Memory” is therefore not a component label but a lifecycle question about different kinds of persistent state.
+
 ## Browse by Year
 
-- **2026:** current emphasis includes enterprise grounding, active database probing, typed query control, versioned dataset interfaces, explicit artifact control, verifiable provenance, verification/publication gates, test-time planning, multi-agent analytics, and reusable semantic memory.
+- **2026:** current emphasis includes enterprise grounding, active database probing, typed query control, versioned dataset interfaces, workload-adaptive structured reuse, explicit artifact control, verifiable provenance, verification/publication gates, test-time planning, multi-agent analytics, and reusable semantic memory.
 - **2025 and earlier:** foundational Text-to-SQL, data-science code, and early data-agent systems will be backfilled along research lines rather than as a month-by-month dump.
 
 ## Evaluation ownership
