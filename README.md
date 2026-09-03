@@ -26,7 +26,7 @@
 
 **证据。** 在为 FanOutQA 每个 test question 加一个人工核验的相关 preceding question 后，论文报告 `FanOutQA cost cut 53 percent`：mean prefill 189K→87K tokens、mean cost $0.26→$0.12；4K cracking decode / cache-read 开销计入成本，LLM-judge accuracy 42% vs. 43%（p=.39）。<!-- timefirst:evidence=matched-cost-result~fanoutqa-cost-cut-53-percent -->
 
-**限制。** 最关键的边界是 `synthetic locality demand cache control absent`：跨查询 locality 是实验主动构造的，而且 matched baseline 同时加入 shared store、catalog、structured reads/writes 与 speculative extraction；缺少同预算 demand-only persistent cache，也没有动态 corpus 的 invalidation / stale-state 维护成本。<!-- timefirst:caveat=locality-and-control-confound~synthetic-locality-demand-cache-control-absent -->
+**限制。** 最关键的边界是 `synthetic locality demand cache control absent`：跨查询 locality 是实验主动构造的，而且 matched baseline 同时加入 shared store、catalog、structured reads/writes 与 speculative extraction；缺少同预算、只按需写入的持久缓存对照，也没有动态 corpus 的 invalidation / stale-state 维护成本。<!-- timefirst:caveat=locality-and-control-confound~synthetic-locality-demand-cache-control-absent -->
 
 **地图。** `early_signal`；进入学习与复用，并连接数据发现与对齐。它把复用对象扩展为 workload 逐步物化的共享 data substrate，但单篇证据不修改稳定地图。
 
