@@ -12,7 +12,7 @@
 | **Planning & Semantic Interaction** | 语义层、中间表示、分析计划、查询分解 |
 | **Execution & Transformation** | SQL / Python / 计算笔记本 / 数据库 / API / 操作系统工具编排 |
 | **Verification & Recovery** | 业务真实性、产物验证、澄清/拒答、失败恢复 |
-| **Learning & Reuse** | 数据库专属记忆、工作流/技能复用、经验积累 |
+| **Learning & Reuse** | 数据库专属记忆、工作流/技能复用、经验积累、跨查询共享结构 |
 
 ## 按研究路线浏览
 
@@ -52,9 +52,15 @@
 
 这条路径拆分五个不同 gate：inference dataflow、显式 workflow artifact、企业来源链、可执行的 answer-reproduction provenance、生产写入授权。BLIP 比 relevance-style provenance 多了一个“删掉其余输入后还能否复现答案”的检查，但仍不证明答案正确或业务真实；五项工作的方向键与控制条件不同，不能合并成强化结论。
 
+### 7. 每次重读原文 → workload-adaptive structure → 持久复用
+
+[Agentic Data Cracking](../papers/2608.31082.md) → [AgentSM](../papers/2601.15709.md)
+
+两者都让后续请求继承历史状态，但复用对象不同。Agentic Data Cracking 把已经打开的非结构化文档逐步物化为共享的 evidence-backed data structure；AgentSM 复用的是 database-specific execution semantic programs。前者的关键未知量是 query locality、demand-only cache 对照与 corpus invalidation，后者则主要面对 schema / workload drift。它们说明“记忆”不是一个组件名，而是不同 persistent state 的生命周期问题。
+
 ## 按年份浏览
 
-- **2026：** 当前重点包括企业数据对齐、主动数据库探查、typed query control、版本化数据集接口、显式产物控制、可验证 provenance、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
+- **2026：** 当前重点包括企业数据对齐、主动数据库探查、typed query control、版本化数据集接口、workload-adaptive structured reuse、显式产物控制、可验证 provenance、验证/发布门槛、测试时规划、多 Agent 分析和可复用语义记忆。
 - **2025 及更早：** 后续将沿研究路线补充作为基础或先驱的 Text-to-SQL、数据科学代码和早期 Data Agent 系统，而不是按月份堆叠列表。
 
 ## 与评测仓库的分工

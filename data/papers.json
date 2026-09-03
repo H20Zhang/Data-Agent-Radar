@@ -1,5 +1,23 @@
 [
   {
+    "id": "2608.31082",
+    "title": "Token-Efficient Data Reasoning Agents via Adaptive Structuring of Unstructured Data",
+    "published": "2026-08-31",
+    "published_at": "2026-08-31T16:53:45Z",
+    "first_seen_at": "2026-09-02T03:24:37Z",
+    "radar_published_at": "2026-09-02T03:29:25Z",
+    "time_provenance": "native_v2",
+    "map_delta": "early_signal",
+    "direction_keys": ["workload-adaptive-structured-reuse"],
+    "status": "public",
+    "note_path": "papers/2608.31082.md",
+    "primary_problem": "learning_reuse",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2608.31082",
+    "research_delta": "Turns document reads already paid for by one data-reasoning query into persistent evidence-backed structure for later distinct queries: a bounded cracking branch speculatively materializes nearby entities, attributes, and relations, while structured reads avoid future raw-document prefill and preserve a conservative fallback.",
+    "main_caveat": "The 53% headline saving is measured under deliberately constructed related-query locality, the matched baseline isolates the whole cracking interface rather than speculation against a same-budget demand-only persistent cache, and the static-corpus evaluation does not account for stale-state detection, invalidation, permissions, or long-run maintenance cost."
+  },
+  {
     "id": "2608.25210",
     "title": "Bolt-on, Verifiable Provenance for LLM-Powered Data Processing",
     "published": "2026-08-25",
