@@ -14,6 +14,7 @@ The first successful update after a boundary creates the prior complete period o
 
 ## Closed periods
 
+- [2026-W36 · 2026-08-31—2026-09-06](weeks/2026-W36.en.md) · [中文](weeks/2026-W36.md)
 - [2026-08 · 2026-08-01—2026-08-31](months/2026-08.en.md) · [中文](months/2026-08.md)
 - [2026-W35 · 2026-08-24—2026-08-30](weeks/2026-W35.en.md) · [中文](weeks/2026-W35.md)
 - [2026-W34 · 2026-08-17—2026-08-23](weeks/2026-W34.en.md) · [中文](weeks/2026-W34.md)
