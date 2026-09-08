@@ -18,9 +18,9 @@ Papers are organized by research problem, research line, and year; “new this w
 
 ### 1. Static schema → active probing → typed query control → semantic layer
 
-[APEX-SQL](../papers/2602.16720.en.md) → [ReAct-SQL](../papers/2608.22651.en.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.en.md)
+[APEX-SQL](../papers/2602.16720.en.md) → [ReAct-SQL](../papers/2608.22651.en.md) → [DevRev NL2SQL](../papers/2609.04641.en.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.en.md)
 
-Enterprise data grounding is more than schema matching. APEX-SQL lets the agent inspect real data to test schema hypotheses; ReAct-SQL uses a matched ablation to separate **probe policy** from a **typed relational representation**, showing that grounding and composition bottlenecks change with the workload; the Semantic-Layer-Mediated Agent moves business concepts into a heavier semantic intermediate layer. These are distinct control boundaries, not a monotonic “more structure is better” ladder.
+Enterprise data grounding is more than schema matching. APEX-SQL lets the agent inspect real data to test schema hypotheses; ReAct-SQL uses a matched ablation to separate **probe policy** from a **typed relational representation**; DevRev NL2SQL makes nested-field metadata exposure, feedback-guided schema expansion, and typed recovery explicit controls; the Semantic-Layer-Mediated Agent moves business concepts into a heavier semantic intermediate layer. These are distinct control boundaries, not a monotonic “more structure is better” ladder.
 
 ### 2. Execute successfully → verify business truth
 

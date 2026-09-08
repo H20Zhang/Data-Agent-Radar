@@ -1,5 +1,25 @@
 [
   {
+    "id": "2609.04641",
+    "title": "A Cost-Aware Agentic Architecture for NL-to-SQL over Nested Enterprise Schemas, with a New Benchmark",
+    "published": "2026-09-04",
+    "published_at": "2026-09-04T02:20:53Z",
+    "first_seen_at": "2026-09-08T02:17:30Z",
+    "radar_published_at": "2026-09-08T02:31:01Z",
+    "time_provenance": "native_v2",
+    "map_delta": "early_signal",
+    "direction_keys": [
+      "feedback-guided-nested-schema-grounding"
+    ],
+    "status": "public",
+    "note_path": "papers/2609.04641.md",
+    "primary_problem": "data_discovery_grounding",
+    "importance": 4,
+    "url": "https://arxiv.org/abs/2609.04641",
+    "research_delta": "Turns nested enterprise-schema grounding into an explicit feedback loop: the agent selects tables from a compressed catalog, retrieves sub-field/schema/value metadata only for chosen entities, expands context on schema-coverage failures, and routes typed repair/checking before accepting executed SQL; matched ablations show the largest loss when enriched nested metadata is removed.",
+    "main_caveat": "The 91.7% headline is a packaged-system result on one LLM-generated, execution-verified Snowflake benchmark whose nested schema and metadata interface align closely with the proposed architecture; baseline evidence exposure and harnesses are not fully matched, the final Answer Correctness includes a GPT-5.2 semantic judge, the public dataset is only promised for future release, and the Spider 2.0 103/120 result is explicitly not leaderboard-comparable."
+  },
+  {
     "id": "2608.31082",
     "title": "Token-Efficient Data Reasoning Agents via Adaptive Structuring of Unstructured Data",
     "published": "2026-08-31",
@@ -8,7 +28,9 @@
     "radar_published_at": "2026-09-02T03:29:25Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["workload-adaptive-structured-reuse"],
+    "direction_keys": [
+      "workload-adaptive-structured-reuse"
+    ],
     "status": "public",
     "note_path": "papers/2608.31082.md",
     "primary_problem": "learning_reuse",
@@ -26,7 +48,9 @@
     "radar_published_at": "2026-08-28T02:33:25Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["verifiable-answer-provenance"],
+    "direction_keys": [
+      "verifiable-answer-provenance"
+    ],
     "status": "public",
     "note_path": "papers/2608.25210.md",
     "primary_problem": "verification_recovery",
@@ -44,7 +68,9 @@
     "radar_published_at": "2026-08-27T02:07:07Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["adaptive-probing-typed-relational-control"],
+    "direction_keys": [
+      "adaptive-probing-typed-relational-control"
+    ],
     "status": "public",
     "note_path": "papers/2608.22651.md",
     "primary_problem": "planning_semantic_interaction",
@@ -62,7 +88,9 @@
     "radar_published_at": "2026-08-25T03:15:40Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["dependency-layer-decomposition-control"],
+    "direction_keys": [
+      "dependency-layer-decomposition-control"
+    ],
     "status": "public",
     "note_path": "papers/2608.23395.md",
     "primary_problem": "planning_orchestration",
@@ -80,7 +108,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["artifact-driven-workflow-compilation"],
+    "direction_keys": [
+      "artifact-driven-workflow-compilation"
+    ],
     "status": "public",
     "note_path": "papers/2608.21341.md",
     "primary_problem": "planning_semantic_interaction",
@@ -98,7 +128,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["evidence-gated-catalog-enrichment"],
+    "direction_keys": [
+      "evidence-gated-catalog-enrichment"
+    ],
     "status": "public",
     "note_path": "papers/2608.20844.md",
     "primary_problem": "verification_recovery",
@@ -116,7 +148,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["ontology-traceable-enterprise-evidence"],
+    "direction_keys": [
+      "ontology-traceable-enterprise-evidence"
+    ],
     "status": "public",
     "note_path": "papers/2608.20661.md",
     "primary_problem": "verification_recovery",
@@ -134,7 +168,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["verified-inference-pipeline-admission"],
+    "direction_keys": [
+      "verified-inference-pipeline-admission"
+    ],
     "status": "public",
     "note_path": "papers/2608.20525.md",
     "primary_problem": "verification_recovery",
@@ -152,7 +188,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["auditable-computational-campaign"],
+    "direction_keys": [
+      "auditable-computational-campaign"
+    ],
     "status": "public",
     "note_path": "papers/2608.20434.md",
     "primary_problem": "execution_transformation",
@@ -170,7 +208,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["governed-scientific-claim-workflow"],
+    "direction_keys": [
+      "governed-scientific-claim-workflow"
+    ],
     "status": "public",
     "note_path": "papers/2608.19902.md",
     "primary_problem": "verification_recovery",
@@ -188,7 +228,9 @@
     "radar_published_at": "2026-08-24T02:49:20Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["dataset-snapshot-skill-interface"],
+    "direction_keys": [
+      "dataset-snapshot-skill-interface"
+    ],
     "status": "public",
     "note_path": "papers/2608.19625.md",
     "primary_problem": "data_discovery_grounding",
@@ -206,7 +248,9 @@
     "radar_published_at": "2026-08-21T03:38:26Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["checked-bounded-tool-lowering"],
+    "direction_keys": [
+      "checked-bounded-tool-lowering"
+    ],
     "status": "public",
     "note_path": "papers/2608.17007.md",
     "primary_problem": "execution_transformation",
@@ -224,7 +268,9 @@
     "radar_published_at": "2026-08-21T03:38:26Z",
     "time_provenance": "native_v2",
     "map_delta": "early_signal",
-    "direction_keys": ["dual-view-versioned-workspace"],
+    "direction_keys": [
+      "dual-view-versioned-workspace"
+    ],
     "status": "public",
     "note_path": "papers/2608.18050.md",
     "primary_problem": "execution_transformation",
@@ -242,7 +288,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["dynamic-orchestration-package"],
+    "direction_keys": [
+      "dynamic-orchestration-package"
+    ],
     "status": "public",
     "note_path": "papers/2608.14246.md",
     "primary_problem": "planning_orchestration",
@@ -260,7 +308,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["business-truth-safety-contract"],
+    "direction_keys": [
+      "business-truth-safety-contract"
+    ],
     "status": "public",
     "note_path": "papers/2608.09254.md",
     "primary_problem": "verification_recovery",
@@ -278,7 +328,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["decoupled-exploration-selection"],
+    "direction_keys": [
+      "decoupled-exploration-selection"
+    ],
     "status": "public",
     "note_path": "papers/2607.14386.md",
     "primary_problem": "planning_orchestration",
@@ -296,7 +348,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["semantic-layer-compilation"],
+    "direction_keys": [
+      "semantic-layer-compilation"
+    ],
     "status": "public",
     "note_path": "papers/2606.31041.md",
     "primary_problem": "planning_semantic_interaction",
@@ -314,7 +368,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["active-data-profiling"],
+    "direction_keys": [
+      "active-data-profiling"
+    ],
     "status": "public",
     "note_path": "papers/2602.16720.md",
     "primary_problem": "data_discovery_grounding",
@@ -332,7 +388,9 @@
     "radar_published_at": null,
     "time_provenance": "legacy_unknown",
     "map_delta": "early_signal",
-    "direction_keys": ["semantic-workflow-memory"],
+    "direction_keys": [
+      "semantic-workflow-memory"
+    ],
     "status": "public",
     "note_path": "papers/2601.15709.md",
     "primary_problem": "learning_reuse",

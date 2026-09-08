@@ -18,9 +18,9 @@
 
 ### 1. 静态数据库模式 → 主动探查 → typed query control → 语义层
 
-[APEX-SQL](../papers/2602.16720.md) → [ReAct-SQL](../papers/2608.22651.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
+[APEX-SQL](../papers/2602.16720.md) → [ReAct-SQL](../papers/2608.22651.md) → [DevRev NL2SQL](../papers/2609.04641.md) → [Semantic-Layer-Mediated Agent](../papers/2606.31041.md)
 
-企业数据对齐不只是数据库模式匹配。APEX-SQL 让 Agent 主动检查真实数据来验证 schema 假设；ReAct-SQL 进一步用 matched ablation 把 **probe policy** 与 **typed relational representation** 拆开，显示 grounding 与 composition 的主要瓶颈会随 workload 改变；Semantic-Layer-Mediated Agent 则把业务概念放进更重的语义中间层。三者对应不同控制边界，不能简单解释为“结构越多越好”。
+企业数据对齐不只是数据库模式匹配。APEX-SQL 让 Agent 主动检查真实数据来验证模式假设；ReAct-SQL 用匹配消融把主动探查策略与类型化关系表示拆开；DevRev NL2SQL 进一步把嵌套字段元数据、反馈驱动的模式扩展和类型化恢复变成独立控制面；Semantic-Layer-Mediated Agent 则把业务概念放进更重的语义中间层。三者对应不同控制边界，不能简单解释为“结构越多越好”。
 
 ### 2. 成功执行 → 验证业务真实性
 
