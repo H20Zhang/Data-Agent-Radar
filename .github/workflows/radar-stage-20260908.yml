@@ -1,0 +1,40 @@
+name: Stage Data Agent Radar update
+
+on:
+  push:
+    branches: [radar-staging-20260908]
+
+permissions:
+  contents: write
+
+jobs:
+  apply-and-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: radar-staging-20260908
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze main, apply accepted research, and validate final tree
+        env:
+          FROZEN_MAIN: c08023e5dc9540bd5e1924a426f4421c98819a03
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$FROZEN_MAIN"
+          export RADAR_TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          python scripts/.radar_stage_apply.py
+          rm scripts/.radar_stage_apply.py .github/workflows/radar-stage-20260908.yml
+          python -m unittest discover -s tests -v
+          python scripts/no_public_runs.py
+          python scripts/validate_reading.py
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add nested-schema grounding control'
+          git push origin HEAD:radar-staging-20260908
